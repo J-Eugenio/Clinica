@@ -1,0 +1,111 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body,html{
+	width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-image: url(../img/fundo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body{
+	padding: 50px 0;
+}
+
+label{
+	font-family: 'Raleway', sans-serif;
+	font-size: 15px !important;
+}
+
+span .obg{
+	color: #A12126; 
+	font-size: 20px; 
+	float: right;
+}
+
+.main {
+    height: 450px !important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.SearchMed{
+	margin: 10px 0;
+}
+
+.linha{
+	height: 450px !important;
+	overflow-y: auto;
+}
+
+.linha::-webkit-scrollbar { width:2px; background: #00beaa;}
+.linha::-webkit-scrollbar-track { background: #4e4e4e; }
+.linha::-webkit-scrollbar-thumb { border-radius:20px; background: #00beaa;}
+.linha::-webkit-scrollbar-corner { visibility: hidden;} 
+.linha::-webkit-resizer { visibility: hidden; }
+
+.tbody-light{
+	background: #f3f3f3;
+}
+
+footer {
+	background: #181818;
+	width: 100%;
+	height: 48px;
+	position:fixed;
+	left: 0;
+	bottom:0;
+	box-shadow: 0 0 3px #000;
+}
+
+footer h1{
+	font-family: 'Raleway', sans-serif !important;
+	font-size: 14px;
+	color: #f3f3f3;
+	text-align: center;
+	margin-top: 20px;
+	cursor: pointer;
+	user-select: none;
+}
+
+footer h1:hover{
+	color: #00beaa;
+}
+
+footer h1:active{
+	position: relative;
+	top: 1px;
+}
+
+@media (max-width: 1000px){
+
+	.container-login{
+		z-index: 0 !important;
+	}
+
+	.conteudo{
+		white-space: nowrap;
+	}
+
+	/*.table{
+		table-layout: fixed;
+	}
+
+	.table td, .table th{
+		word-wrap: break-word;
+		padding: 10px;
+	}*/
+
+}
+.up{
+	text-transform: uppercase;
+}
