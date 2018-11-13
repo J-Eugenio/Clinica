@@ -42,7 +42,7 @@ if (isset($_SESSION["tipoUsuario"])) {
         <link rel="stylesheet" type="text/css" href="../css/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <script src="../bootstrap/js/bootstrap.min.js"></script>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="estilo.css" rel="stylesheet">
@@ -134,8 +134,37 @@ if (isset($_SESSION["tipoUsuario"])) {
                 </form>
             <!-- FIM DO FORMULARO -->  
 
-            <!-- MODAL DE ESCOLHA DE PACIENTE -->
+              <!-- MODAL DE ESCOLHA DE PACIENTE -->
                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM MÉDICO</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="conteudo">              
+                              <div class="row input-group">
+                                <input type="text" name="" class="form-control" style="border-radius: 0;">
+                                <button class="form-group">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-success" style="margin: 0 auto;">GERAR RELATÓRIO</button>
+                          </div>
+                        </form>
+                        </div>
+                      </div>
+                  </div>
+ <!-- F I M  M O D A L -->
+
+            <!-- MODAL DE ESCOLHA DE PACIENTE -->
+                 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -149,17 +178,16 @@ if (isset($_SESSION["tipoUsuario"])) {
                             <table>
                                   <thead>
                                           <tr class="titulo-table">
-                                            <th class="column1">PACIENTES CADASTRADOS</th>
+                                            <th class="column1">PESQUISAR PACIENTES</th>
                                             <th class="column2"></th> 
                                           </tr>
                                   </thead> 
-                                  <tbody>                                
-                                      <?php while ($dadosPac = $paciente->retornaDados("object")) { ?> 
+                                   <tbody>                                
+                                      <form action="../" method="POST" target="_blank">
                                       <tr class="linhas_tabela">
-                                         <td colspan="2"><?php echo $dadosPac->NOME ?></td>
-                                         <td><a><button onclick="Clique('<?php echo $dadosPac->NOME ?>','<?php echo $dadosPac->IDPACIENTE ?>');" type="button" id="btn_add" data-dismiss="modal"><img src="../img/add3.png"></button></a></td>
-                                      </tr>
-                                      <?php } ?>
+                                         <td colspan="1"><input type="text" name="campoPesCpf" class="form-control" style="border-radius: 0; border: 1px solid black"></td>
+                                         <a><button onclick="Clique('<?php echo $dadosPac->NOME ?>','<?php echo $dadosPac->IDPACIENTE ?>');" type="button" id="btn_add" data-dismiss="modal"><i class="fas fa-search"></i></button></a>
+                                      </form>
                                   </tbody>            
                             </table>
                             </div>

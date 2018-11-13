@@ -2,12 +2,13 @@
  .modal-body{
    height:350px;
    overflow: auto;
+   background: #00beaa;
  }
 
 .modal-header{
-	background-color: #00beaa;
+	background-color: #f3f3f3;
 	border-radius: 5px;
-	color: white;
+	color: #00beaa;
 }
 
  .modal-dialog{
@@ -67,10 +68,9 @@ table{
 
 #btn_add{
 	  cursor: pointer;
-	  padding: 1px 1px;
-	  border-radius: 50%;
+	  width: 30px;
+	  height: 30px;
 	  border: none;
-	  font-size: 10px;
 	  background-color: #004840;
 	  color: #fff;
 }
