@@ -3,9 +3,9 @@
 abstract class ConexaoDB {
     
     public $servidor = "localhost";
-    public $usuario = "pmauser";
-    public $senha = "kqklpi123";
-    public $nomeBanco = "clinicacandido";
+    public $usuario = "root";
+    public $senha = "";
+    public $nomeBanco = "clinica_candido_torres_database";
     public $conexao = null;
     public $dataset = null;
     public $linhaAfetada = -1 ;

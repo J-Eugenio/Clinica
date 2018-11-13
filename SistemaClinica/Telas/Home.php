@@ -32,6 +32,7 @@ $medic->retornaTudo($medic);
 	<link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<script src="../js/jquery-3.2.1.js"></script>
         
   <script type="text/javascript">
@@ -61,7 +62,9 @@ $medic->retornaTudo($medic);
             <option value="<?php echo $dadoMedic->NOME; ?>"><?php echo $dadoMedic->NOME; ?></option>
             <?php } ?>
         </select>
-        <input type="submit" name="submit" class="btn btn-default">   
+        <button type="submit" style="width: 30px; background: #f3f3f3; border: none;">
+          <i class="fas fa-search"></i>  
+        </button>
       </div> 
     </form>
 <div class="row linha col-md-10 offset-md-1">
@@ -94,7 +97,9 @@ $medic->retornaTudo($medic);
             <td><?php echo date("d/m/Y", strtotime($dado["DATADEATENDIMENTO"])); ?></td>
             <td><?php echo $dado["CELULAR"]; ?></td>
             <td>
-              <a href="" data-toggle="modal" data-target="example" >$</a>
+              <a href="" data-toggle="modal" data-target="example">
+                <i class="fas fa-dollar-sign"></i>
+              </a>
             </td>
           </tr>
           <?php } ?> 

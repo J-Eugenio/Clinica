@@ -15,7 +15,7 @@ header nav li{
 	color: #f3f3f3 !important;
 }
 
-nav a:hover{
+nav ul li a:hover{
 	color: #181818 !important;
 }
 
@@ -58,6 +58,10 @@ label{
 .menu ul li{
 	width: 150px;
 	display: inline-block;
+}
+
+.menu ul li:hover{
+	color: #181818;
 }
 
 .menu a{
