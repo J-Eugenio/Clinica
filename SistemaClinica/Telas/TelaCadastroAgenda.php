@@ -27,7 +27,21 @@ if (isset($_SESSION["tipoUsuario"])) {
  
  
 ?>
+ <?php
+            "<script>
+                function Pesquisa(){
+                var cpf = document.getElementById('campo').value;
+                return cpf;
+                }
+
+                var retorno = Pesquisa();
+             </script>"; 
+
+             
+
+ ?>
  
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -148,21 +162,25 @@ if (isset($_SESSION["tipoUsuario"])) {
                               <div class="input-group">
                                 <input type="text" id="campo" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
                                 <span class="input-group-btn">
+                                
                                 <button class="btn btn-default" onclick="Pesquisa();" style="height: 30px;"><i class="fas fa-search"></i></button>
                                 </span>
                               </div>
                               <hr>
-                                 <table>
+                                 <form action="#" method="POST">
+                                 <select id="lista">
                                     <?php while ($dadoPac = $paciente->retornaDados("object")) { ?>  
-                                      <tr><td><?php echo $dadoPac->NOME; ?></td></tr></label>
+                                    <option value="<?php echo $dadoMedic->NOME; ?>"><?php echo $dadoPac->NOME; ?></option>
                                     <?php } ?>
-                               </table>
+                                 </select>
+                                 </form>
                               <!-- W H I L E -->
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
                           </div>
+
                         </form>
                         </div>
                       </div>
@@ -173,17 +191,35 @@ if (isset($_SESSION["tipoUsuario"])) {
             </div>
         </div>
  
-<?php include '../util/footer.php' ?>
- 
-        <script type="">
- 
-              //FUNÇÃO
-              function Pesquisa(){
-                 var cpf =  document.getElementById('campo').value;
-                 return cpf;
-              }       
+    <?php include '../util/footer.php' ?>
 
-        </script>
+                                 
+        <script type="text/javascript">
+          $(document).ready(function () {
+
+              $('#campo').keyup(function () {
+                  var termo = $(this).val();
+                  var fazerAjax = true;
+                  for (var i = 0; i < lista.length; i++) { //Lista de fornecedores do ultimo Ajax
+                      if (lista[i].search(termo) != -1) //Caso o que o usuario esteja digitado tenha ainda tenha na lista do ultimo ajax não realizar o ajax de novo.
+                          fazerAjax = false;
+                  }
+                  if (termo.length >= 3 && fazerAjax) { //Só fazer o ajax caso o termo de busca seja maior e igual a 3 e o texto digitado seja diferente de todos os fornecedores do ultimo ajax
+                      $.ajax({
+                          type: 'POST',
+                          url: '../util/daoGenerico.php',
+                          data: {
+                              nome: termo
+                          },
+                          success: function (data) {
+                              $('#lista').html(data);
+                          }
+                      });
+                  }
+              });
+
+          });
+        </script>              
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/modal.css">
