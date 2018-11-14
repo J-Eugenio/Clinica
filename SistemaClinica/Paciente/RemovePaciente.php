@@ -21,13 +21,13 @@ if(isset($pegarId["Idpaciente"])){
     if ($paciente->deletar($paciente)){
         echo "
 		<script>
-			alert('Paciente deletado com sucesso!!')
+			alert('Paciente deletado com sucesso!')
 			location.href='TelaPacienteTable.php';
 		</script>";
     }else{
         echo "
 		<script>
-			alert('Não foi possivel deletar o paciente!!.');
+			alert('Não foi possivel deletar o paciente!');
 			location.href='TelaPacienteTable.php';
 		</script>";
     }

@@ -74,7 +74,7 @@ $paciente->retornaTudo($paciente);
                                 <td class="up"><?php echo $dado->SEXO ?></td>
                                 <td class="column4"><a href="../Telas/TelaAtualizarPaciente.php?Idpaciente=<?php echo $dado->IDPACIENTE; ?>">Editar</a> 
                                     <a href="" id="separador">|</a>
-                                    <a href="javascript: if(confirm('Tem certeza que quer deletar o usuário <?php echo $dado->NOME; ?> ?')) 
+                                    <a href="javascript: if(confirm('Tem certeza que quer deletar o paciente <?php echo $dado->NOME; ?> ? Todas as agendas vinculadas ao paciente serão excluidas!')) 
                                        location.href='RemovePaciente.php?Idpaciente=<?php echo $dado->IDPACIENTE; ?>';">Excluir</a>
                                 </td>
                             </tr> 
