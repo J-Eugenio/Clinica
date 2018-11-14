@@ -56,7 +56,7 @@ if (isset($_SESSION["tipoUsuario"])) {
         <link rel="stylesheet" type="text/css" href="../css/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <script src="../bootstrap/js/bootstrap.min.js"></script>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="estilo.css" rel="stylesheet">
@@ -146,28 +146,18 @@ if (isset($_SESSION["tipoUsuario"])) {
        
                 </form>
             <!-- FIM DO FORMULARO -->  
-<<<<<<< HEAD
  
               <!-- MODAL DE ESCOLHA DE PACIENTE -->
-=======
-
-            <!-- MODAL DE ESCOLHA DE PACIENTE -->
->>>>>>> parent of dd487c8... Modificações
                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-<<<<<<< HEAD
                             <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM PACIENTE</h5>
-=======
-                            <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM ITEM</h5>
->>>>>>> parent of dd487c8... Modificações
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-<<<<<<< HEAD
                             <div class="conteudo">              
                               <div class="input-group">
                                 <input type="text" id="campo" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
@@ -192,30 +182,6 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
 
                         </form>
-=======
-                            <div class="conteudo">
-                            <table>
-                                  <thead>
-                                          <tr class="titulo-table">
-                                            <th class="column1">PACIENTES CADASTRADOS</th>
-                                            <th class="column2"></th> 
-                                          </tr>
-                                  </thead> 
-                                  <tbody>                                
-                                      <?php while ($dadosPac = $paciente->retornaDados("object")) { ?> 
-                                      <tr class="linhas_tabela">
-                                         <td colspan="2"><?php echo $dadosPac->NOME ?></td>
-                                         <td><a><button onclick="Clique('<?php echo $dadosPac->NOME ?>','<?php echo $dadosPac->IDPACIENTE ?>');" type="button" id="btn_add" data-dismiss="modal"><img src="../img/add3.png"></button></a></td>
-                                      </tr>
-                                      <?php } ?>
-                                  </tbody>            
-                            </table>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                          </div>
->>>>>>> parent of dd487c8... Modificações
                         </div>
                       </div>
                   </div>

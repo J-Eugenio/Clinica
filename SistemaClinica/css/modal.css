@@ -5,15 +5,9 @@
  }
  
 .modal-header{
-<<<<<<< HEAD
     background-color: #00beaa;
     border-radius: 5px;
     color: #f3f3f3;
-=======
-	background-color: #00beaa;
-	border-radius: 5px;
-	color: white;
->>>>>>> parent of dd487c8... Modificações
 }
  
  .modal-dialog{
@@ -72,22 +66,12 @@ table{
 }
  
 #btn_add{
-<<<<<<< HEAD
       cursor: pointer;
       width: 30px;
       height: 30px;
       border: none;
       background-color: #004840;
       color: #fff;
-=======
-	  cursor: pointer;
-	  padding: 1px 1px;
-	  border-radius: 50%;
-	  border: none;
-	  font-size: 10px;
-	  background-color: #004840;
-	  color: #fff;
->>>>>>> parent of dd487c8... Modificações
 }
  
 #btn_add:hover{
