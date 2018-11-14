@@ -13,7 +13,7 @@
                             <div class="conteudo">              
               					     	<select class="custom-select" style="text-transform: uppercase;" name="medico">
                                 <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
-              									<option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
+              									 <option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
                                 <?php  }  ?>
               								</select>
                             </div>

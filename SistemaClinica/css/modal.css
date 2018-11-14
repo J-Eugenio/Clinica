@@ -1,86 +1,85 @@
- /*ESTILIZAÇÃO DO MODAL PACIENTE*/
+/*ESTILIZAÇÃO DO MODAL PACIENTE*/
  .modal-body{
    height:350px;
    overflow: auto;
-   background: #00beaa;
  }
-
+ 
 .modal-header{
-	background-color: #f3f3f3;
-	border-radius: 5px;
-	color: #00beaa;
+    background-color: #00beaa;
+    border-radius: 5px;
+    color: #f3f3f3;
 }
-
+ 
  .modal-dialog{
    font-family: 'Raleway', sans-serif !important;
    width: 400px;
  }
-
+ 
  .modal-body:hover{
    overflow-y:auto;
  }
-
+ 
   .fade{
    opacity:1;
    -webkit-transaction: opacity 2s linear;
    transaction:opacity 2s linear;
    }
-
+ 
  .close{
- 	position: relative;
- 	top: -30px;
- 	right: 0;
+    position: relative;
+    top: -30px;
+    right: 0;
  }
-
+ 
  .close:hover{
- 	background: transparent !important;
- 	color: #000;
+    background: transparent !important;
+    color: #000;
  }
-
+ 
  /*ESTILIZAÇÃO DA TABELA MODAL PACIENTE*/
 table{
-	border-collapse: separate; 
-	border-spacing: 10px;
-	text-transform: uppercase;
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-transform: uppercase;
 }
-
+ 
 .column1 {
   width: 50%;
 }
-
+ 
 .column2 {
   width: 60%;
 }
-
+ 
 .conteudo .titulo-table{
-	color: #00beaa;
-	text-transform: uppercase;
-	white-space: nowrap;
-	line-height: 0;
+    color: #00beaa;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 0;
 }
 .conteudo th{
-	padding: 25px 0;
+    padding: 25px 0;
 }
-
+ 
 .conteudo tr td{
-	padding: 2px 0;
+    padding: 2px 0;
 }
-
+ 
 #btn_add{
-	  cursor: pointer;
-	  width: 30px;
-	  height: 30px;
-	  border: none;
-	  background-color: #004840;
-	  color: #fff;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: #004840;
+      color: #fff;
 }
-
+ 
 #btn_add:hover{
        background-color: orange;
 }
-
+ 
 .modal-body::-webkit-scrollbar { width:2px; background: #00beaa;}
 .modal-body::-webkit-scrollbar-track { background: #4e4e4e; }
 .modal-body::-webkit-scrollbar-thumb { border-radius:20px; background: #00beaa;}
-.modal-body::-webkit-scrollbar-corner { visibility: hidden;} 
+.modal-body::-webkit-scrollbar-corner { visibility: hidden;}
 .modal-body::-webkit-resizer { visibility: hidden; }

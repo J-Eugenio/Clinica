@@ -6,28 +6,28 @@ include_once '../util/daoGenerico.php';
 include_once '../Paciente/Paciente.php';
 include_once '../Atendimento/Atendimento.php';
 include_once '../Medico/Medico.php';
-
+ 
 protect();
-
-
+ 
+ 
 $medic = new Medico();
 $tipoAten = new Atendimento();
 $paciente = new Paciente();
-
+ 
 if (isset($_SESSION["tipoUsuario"])) {
     $tipo_user = $_SESSION["tipoUsuario"];
 }
-
+ 
    //PARA LISTAR NOS COMBOBOX
    $tipoAten->retornaTudo($tipoAten);
    $medic->retornaTudo($medic);
-
+ 
    //PARA LISTAR JANELA MODAL
    $paciente->retornaTudo($paciente);
-
-
+ 
+ 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -49,36 +49,37 @@ if (isset($_SESSION["tipoUsuario"])) {
         <script src="../js/jquery-3.2.1.js"></script>
         <script src="../js/login.js"></script>
         <script type="text/javascript">
-
+ 
             $(document).ready( function () {
-
+ 
                 var tipo_user = "<?php echo $tipo_user ?>";
                 var id = "<?php echo $id ?>";
-                
-
+               
+ 
                 if (tipo_user != "Administrador") {
                     document.getElementById("opcaoUser").style.display = "none";
                 }
-                
-            });                 
-    
+               
+            });    
+                                 
+   
         </script>
-
+ 
     </head>
     <body>
-
+ 
   <?php include '../util/nav.php' ?>
-  
+ 
         <div class="container mid">
-
-
+ 
+ 
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="titulo-h2">Cadastro Agenda</h2>
-
+ 
             <!-- FORMULARO DE CADASTRO AGENDA -->    
                 <form id="form" action="../Agenda/RegistraAgenda.php" method="POST">
-                        <div class="row">
+                        <div class="row col-sm-12">
                           <div class="form-group col-sm-5">
                             <label for="paciente">Paciente:</label>
                             <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
@@ -88,9 +89,9 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </button>
                             <input type="hidden" id="CampoId" name="Idpaciente">
                           </div>
-
+ 
                           <div class="form-group col-sm-4">
-                            <label for="IdMedic" >Medico:</label>
+                            <label for="IdMedic">Médico:</label>
                             <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                             <select class="form-control" name="medico" id="IdMedic" style="text-transform: uppercase;">  
                               <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
@@ -98,18 +99,16 @@ if (isset($_SESSION["tipoUsuario"])) {
                               <?php } ?>
                             </select>
                           </div>
-
+ 
                             <div class="form-group col-sm-3">
-                                <label for="DataAtendId">Data de Atendimento:</label>
+                                <label for="DataAtendId" style="white-space:nowrap;">Data de Atendimento:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                                 <input type="text" class="form-control" name="datadeatendimento" id="DataAtendId" required>
                             </div>
-
-                            
                         </div>
-
-                        <div class="row">
-                          
+ 
+                        <div class="row col-sm-12">
+                         
                             <div class="form-group col-md-5">
                                 <label for="IdTipoAtend">Tipo Atendimento:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
@@ -119,102 +118,73 @@ if (isset($_SESSION["tipoUsuario"])) {
                                     <?php } ?>
                                 </select>
                             </div>
-
-
+ 
+ 
                          <div class="form-group col-sm-7">
                                 <label for="obsId">Observação:</label>
                                 <input type="text" class="form-control" name="observacao" id="obsId">
                             </div>
                         </div>
-
+ 
                         <button type="submit" class="bt-salvar">Salvar</button>
                         <a href="../Agenda/TelaAgendaTable.php"><button type="button" class="bt-buscar">Buscar</button></a>
-
+ 
        
                 </form>
             <!-- FIM DO FORMULARO -->  
-
+ 
               <!-- MODAL DE ESCOLHA DE PACIENTE -->
                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM MÉDICO</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM PACIENTE</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
                             <div class="conteudo">              
-                              <div class="row input-group">
-                                <input type="text" name="" class="form-control" style="border-radius: 0;">
-                                <button class="form-group">
-                                  <i class="fas fa-search"></i>
-                                </button>
+                              <div class="input-group">
+                                <input type="text" id="campo" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" onclick="Pesquisa();" style="height: 30px;"><i class="fas fa-search"></i></button>
+                                </span>
                               </div>
+                              <hr>
+                                 <table>
+                                    <?php while ($dadoPac = $paciente->retornaDados("object")) { ?>  
+                                      <tr><td><?php echo $dadoPac->NOME; ?></td></tr></label>
+                                    <?php } ?>
+                               </table>
+                              <!-- W H I L E -->
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-success" style="margin: 0 auto;">GERAR RELATÓRIO</button>
+                            <button type="button" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
                           </div>
                         </form>
                         </div>
                       </div>
                   </div>
- <!-- F I M  M O D A L -->
-
-            <!-- MODAL DE ESCOLHA DE PACIENTE -->
-                 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM ITEM</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="conteudo">
-                            <table>
-                                  <thead>
-                                          <tr class="titulo-table">
-                                            <th class="column1">PESQUISAR PACIENTES</th>
-                                            <th class="column2"></th> 
-                                          </tr>
-                                  </thead> 
-                                   <tbody>                                
-                                      <form action="../" method="POST" target="_blank">
-                                      <tr class="linhas_tabela">
-                                         <td colspan="1"><input type="text" name="campoPesCpf" class="form-control" style="border-radius: 0; border: 1px solid black"></td>
-                                         <a><button onclick="Clique('<?php echo $dadosPac->NOME ?>','<?php echo $dadosPac->IDPACIENTE ?>');" type="button" id="btn_add" data-dismiss="modal"><i class="fas fa-search"></i></button></a>
-                                      </form>
-                                  </tbody>            
-                            </table>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
                   <!-- F I M  M O D A L -->
-                  
+                 
                 </div>
             </div>
         </div>
-
+ 
 <?php include '../util/footer.php' ?>
-
+ 
         <script type="">
+ 
+              //FUNÇÃO
+              function Pesquisa(){
+                 var cpf =  document.getElementById('campo').value;
+                 return cpf;
+              }       
 
-              //FUNÇÃO DE CLIQUE DO BOTÃO MODAL PACIENTE        
-                 function Clique($Nome,$id){
-                    document.getElementById("paciente").value = $Nome;
-                    document.getElementById("CampoId").value = $id; 
-                 }  
-                      
         </script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/modal.css">
         <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -227,4 +197,3 @@ if (isset($_SESSION["tipoUsuario"])) {
         </script>
     </body>
 </html>
-
