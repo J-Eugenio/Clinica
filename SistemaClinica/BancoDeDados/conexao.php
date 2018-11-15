@@ -1,9 +1,9 @@
 ﻿<?php
-		$servidor = "localhost";
-	$usuario = "pmauser";
-	$senha = "kqklpi123";
-	$dbname = "clinicacandido";
+	$servidor = "localhost";
+	$usuario = "root";
+	$senha = "";
+	$dbname = "clinica_candido_torres_database";
 	
 	//Criar a conexão
-	$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+	$con = mysqli_connect($servidor, $usuario, $senha, $dbname);
 ?>

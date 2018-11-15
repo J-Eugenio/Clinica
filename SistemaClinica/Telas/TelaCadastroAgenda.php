@@ -13,10 +13,14 @@ protect();
 $medic = new Medico();
 $tipoAten = new Atendimento();
 $paciente = new Paciente();
+$dao = new daoGenerico();
+
+
  
 if (isset($_SESSION["tipoUsuario"])) {
     $tipo_user = $_SESSION["tipoUsuario"];
 }
+
  
    //PARA LISTAR NOS COMBOBOX
    $tipoAten->retornaTudo($tipoAten);
@@ -24,23 +28,9 @@ if (isset($_SESSION["tipoUsuario"])) {
  
    //PARA LISTAR JANELA MODAL
    $paciente->retornaTudo($paciente);
- 
- 
+
+  
 ?>
- <?php
-            "<script>
-                function Pesquisa(){
-                var cpf = document.getElementById('campo').value;
-                return cpf;
-                }
-
-                var retorno = Pesquisa();
-             </script>"; 
-
-             
-
- ?>
- 
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -74,9 +64,8 @@ if (isset($_SESSION["tipoUsuario"])) {
                     document.getElementById("opcaoUser").style.display = "none";
                 }
                
-            });    
-                                 
-   
+            });  
+
         </script>
  
     </head>
@@ -138,7 +127,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                                 <label for="obsId">Observação:</label>
                                 <input type="text" class="form-control" name="observacao" id="obsId">
                             </div>
-                        </div>
+                         </div>
                         
                         <button type="submit" class="bt-salvar" style="margin-left: 12px;">Salvar</button>
                         <a href="../Agenda/TelaAgendaTable.php"><button type="button" class="bt-buscar">Buscar</button></a>
@@ -159,29 +148,27 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-body">
                             <div class="conteudo">              
-                              <div class="input-group">
-                                <input type="text" id="campo" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
-                                <span class="input-group-btn">
-                                
-                                <button class="btn btn-default" onclick="Pesquisa();" style="height: 30px;"><i class="fas fa-search"></i></button>
-                                </span>
-                              </div>
+                            <div class="input-group">
+                             <input type="text" id="campo" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
+                                <span class="input-group-btn">      
+                                <button class="btn btn-default" id="btnPes" style="height: 30px;"><i class="fas fa-search"></i></button>
+                               </span>
+                            </div>
                               <hr>
-                                 <form action="#" method="POST">
-                                 <select id="lista" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
-                                    <?php while ($dadoPac = $paciente->retornaDados("object")) { ?>  
-                                    <option value="<?php echo $dadoMedic->NOME; ?>"><?php echo $dadoPac->NOME; ?></option>
-                                    <?php } ?>
-                                 </select>
-                                 </form>
-                              <!-- W H I L E -->
+                              <!-- LISTA DADOS PESQUISADOS AQUI -->
+                              <table> 
+                                <tr>
+                                  <td id="col1"></td>
+                                  <td id="col2"></td>
+                                </tr>
+                              </table>
+                              <!-- -->
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
+                            <button type="button" id="btnNovo" class="btn btn-danger" style="margin: 0 auto;">NOVO</button>
                           </div>
-
-                        </form>
                         </div>
                       </div>
                   </div>
@@ -193,42 +180,39 @@ if (isset($_SESSION["tipoUsuario"])) {
  
     <?php include '../util/footer.php' ?>
 
-                                 
-        <script type="text/javascript">
-          $(document).ready(function () {
-
-              $('#campo').keyup(function () {
-                  var termo = $(this).val();
-                  var fazerAjax = true;
-                  for (var i = 0; i < lista.length; i++) { //Lista de fornecedores do ultimo Ajax
-                      if (lista[i].search(termo) != -1) //Caso o que o usuario esteja digitado tenha ainda tenha na lista do ultimo ajax não realizar o ajax de novo.
-                          fazerAjax = false;
-                  }
-                  if (termo.length >= 3 && fazerAjax) { //Só fazer o ajax caso o termo de busca seja maior e igual a 3 e o texto digitado seja diferente de todos os fornecedores do ultimo ajax
-                      $.ajax({
-                          type: 'POST',
-                          url: '../util/daoGenerico.php',
-                          data: {
-                              nome: termo
-                          },
-                          success: function (data) {
-                              $('#lista').html(data);
-                          }
-                      });
-                  }
-              });
-
-          });
-        </script>              
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/modal.css">
         <script src="../bootstrap/js/bootstrap.min.js"></script>
         <script src="../js/jquery-3.2.1.js"></script>
         <script src="../js/jquery.mask.js"></script>
         <script type="text/javascript">
+
             $(document).ready(function () {
+
+                //MASCARAS DOS CAMPOS
                 $('#DataAtendId').mask('00/00/0000');
+                $('#campo').mask('000.000.000-00');
+                //--------------------
+
+                $('#btnPes').on("click",function(){
+                  
+                  var valor = document.getElementById('campo').value;
+                  var botao =  document.getElementById('btnNovo');
+
+                  $.ajax({
+                    url: '../util/modal_ajax.php',
+                    type: 'POST',
+                    data: {cpf:valor},
+                    success: function(retorno){
+
+                       $('#col1').html(retorno);
+                 
+                    },error: function(){
+                        alert('Error..Servidor nao Encontrado!!');           
+                    }
+                  });
+
+                });
             });
         </script>
     </body>

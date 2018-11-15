@@ -158,7 +158,7 @@ class daoGenerico extends ConexaoDB {
    }
 
    public function retornarPorCpf($cpf){
-     $sql = "SELECT * FROM PACIENTE WHERE CPF = '$cpf'";
+     $sql = "SELECT NOME FROM PACIENTE WHERE CPF = '$cpf'";
      return $this->executaSQL($sql);
    }
 }
