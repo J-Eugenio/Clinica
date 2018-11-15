@@ -81,13 +81,11 @@ if(isset($_SESSION["tipoUsuario"])){
 
               <div class="form-group col-md-3">
                 <label>RG:</label>
-                
                 <input type="text" class="form-control" name="txtRG" id="rg"  >
               </div>
 
               <div class="form-group col-md-4">
                 <label for="email">Email:</label>
-                
                 <input type="text" class="form-control" name="txtEmail" id="email" >
               </div>
 
@@ -108,13 +106,11 @@ if(isset($_SESSION["tipoUsuario"])){
 
                 <div class="form-group col-md-3">
                   <label for="indica">Indicação:</label>
-                  
                   <input type="text" class="form-control up" name="txtIndicacao" id="indica"> 
                 </div>
           
                 <div class="form-group col-md-2">
                   <label for="eCivil">Estado Civil:</label>
-                  
                   <select class="form-control" name="cxEstadoCivil" id="eCivil" >
                                 <option value="">-----</option>
                                 <option value="Casado(a)">Casado(a)</option>
@@ -127,42 +123,36 @@ if(isset($_SESSION["tipoUsuario"])){
 
                 <div class="form-group col-md-4">
                   <label for="profissao">Profissão:</label>
-                  
                   <input type="text" class="form-control up" name="txtProfissao" id="profissao" >
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="cidade">Cidade:</label>
-                  
                   <input type="text" class="form-control up" name="txtCidade" id="cidade" >
                 </div>
                 
               </div>
 
               <div class="row">
-
                 <div class="form-group col-md-3">
                   <label for="estado">Estado:</label>
-                  
                   <input type="text" class="form-control up" name="txtEstado" id="estado" >
                 </div>
 
 
                 <div class="form-group col-md-3">
                   <label for="telefone">Telefone:</label>
-                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                   <input type="text" class="form-control" name="txtTelefone" id="telefone" required>
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="celular">Celular:</label>
-                  
+                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                   <input type="text" class="form-control" name="txtCelular" id="celular" >
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="CEP">CEP:</label>
-                  
                   <input type="text" class="form-control" name="txtCEP" id="CEP" >
                 </div>
               </div>
@@ -170,19 +160,16 @@ if(isset($_SESSION["tipoUsuario"])){
               <div class="row">
                 <div class="form-group col-md-3">
                   <label for="bairro">Bairro:</label>
-                  
                   <input type="text" class="form-control up" name="txtBairro" id="bairro" >
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="endereco">Endereço:</label>
-                  
                   <input type="text" class="form-control up" name="txtEndereco" id="endereco" >
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="numero">Numero:</label>
-                  
                   <input type="text" class="form-control" name="txtNumero" id="numero" >  
                 </div>
 

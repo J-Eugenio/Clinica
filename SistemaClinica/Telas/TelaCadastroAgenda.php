@@ -107,7 +107,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           <div class="form-group col-sm-4">
                             <label for="IdMedic">Médico:</label>
                             <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                            <select class="form-control" name="medico" id="IdMedic" style="text-transform: uppercase;">  
+                            <select class="form-control" name="medico" id="IdMedic" style="text-transform: uppercase; outline: 0;">  
                               <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
                                   <option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
                               <?php } ?>
@@ -115,7 +115,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
  
                             <div class="form-group col-sm-3">
-                                <label for="DataAtendId" style="white-space:nowrap;">Data de Atendimento:</label>
+                                <label for="DataAtendId" style="white-space:nowrap;">Data de Atend.:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                                 <input type="text" class="form-control" name="datadeatendimento" id="DataAtendId" required>
                             </div>
@@ -123,7 +123,7 @@ if (isset($_SESSION["tipoUsuario"])) {
  
                         <div class="row col-sm-12">
                          
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-6">
                                 <label for="IdTipoAtend">Tipo Atendimento:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                                 <select class="form-control" name="TipoAtendimento" id="IdTipoAtend" >
@@ -134,13 +134,13 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </div>
  
  
-                         <div class="form-group col-sm-7">
+                         <div class="form-group col-sm-6">
                                 <label for="obsId">Observação:</label>
                                 <input type="text" class="form-control" name="observacao" id="obsId">
                             </div>
                         </div>
- 
-                        <button type="submit" class="bt-salvar">Salvar</button>
+                        
+                        <button type="submit" class="bt-salvar" style="margin-left: 12px;">Salvar</button>
                         <a href="../Agenda/TelaAgendaTable.php"><button type="button" class="bt-buscar">Buscar</button></a>
  
        
@@ -168,7 +168,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                               </div>
                               <hr>
                                  <form action="#" method="POST">
-                                 <select id="lista">
+                                 <select id="lista" class="form-control" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
                                     <?php while ($dadoPac = $paciente->retornaDados("object")) { ?>  
                                     <option value="<?php echo $dadoMedic->NOME; ?>"><?php echo $dadoPac->NOME; ?></option>
                                     <?php } ?>

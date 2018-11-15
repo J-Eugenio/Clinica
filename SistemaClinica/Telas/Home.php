@@ -56,7 +56,7 @@ $medic->retornaTudo($medic);
   <div class="container main">
     <form action="Home.php" method="POST" style="text-transform: uppercase;">
       <div class="row input-group col-md-10 offset-md-1 SearchMed grid">
-        <select name="nomeMedico" class="form-control" style="text-transform: uppercase;">
+        <select name="nomeMedico" class="form-control" style="text-transform: uppercase; height: 38px !important;">
           <option value="">Selecione um Médico</option>
             <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
             <option value="<?php echo $dadoMedic->NOME; ?>"><?php echo $dadoMedic->NOME; ?></option>

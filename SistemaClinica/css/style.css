@@ -57,6 +57,10 @@ span .obg{
 	background: #f3f3f3;
 }
 
+select{
+	height: 30px !important;
+}
+
 footer {
 	background: #181818;
 	width: 100%;
