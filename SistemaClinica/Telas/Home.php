@@ -76,6 +76,7 @@ $medic->retornaTudo($medic);
             <th>ATENDIMENTO</th>
             <th>DATA</th>
             <th>TELEFONE</th>
+            <th>CHECK</th>
             <th></th>
           </tr>
         </thead>
@@ -96,6 +97,11 @@ $medic->retornaTudo($medic);
             <td><?php echo $dado["TIPODEATENDIMENTO"]; ?></td>
             <td><?php echo date("d/m/Y", strtotime($dado["DATADEATENDIMENTO"])); ?></td>
             <td><?php echo $dado["CELULAR"]; ?></td>
+            <td>
+              <a href="">
+                <i class="fas fa-calendar-check"></i>
+              </a>
+            </td>
             <td>
               <a href="" data-toggle="modal" data-target="example">
                 <i class="fas fa-dollar-sign"></i>

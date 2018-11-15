@@ -142,13 +142,13 @@ if(isset($_SESSION["tipoUsuario"])){
 
                 <div class="form-group col-md-3">
                   <label for="telefone">Telefone:</label>
-                  <input type="text" class="form-control" name="txtTelefone" id="telefone" required>
+                  <input type="text" class="form-control" name="txtTelefone" id="telefone">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="celular">Celular:</label>
                   <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                  <input type="text" class="form-control" name="txtCelular" id="celular" >
+                  <input type="text" class="form-control" name="txtCelular" id="celular" required>
                 </div>
 
                 <div class="form-group col-md-3">
