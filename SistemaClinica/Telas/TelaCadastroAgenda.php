@@ -1,11 +1,14 @@
 <?php
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
+
+
 include_once '../Login/ProtectPaginas.php';
 include_once '../util/daoGenerico.php';
 include_once '../Paciente/Paciente.php';
 include_once '../Atendimento/Atendimento.php';
 include_once '../Medico/Medico.php';
+
  
 protect();
  
@@ -167,7 +170,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" id="btnNovo" class="btn btn-danger" style="margin: 0 auto;">NOVO</button>
+                            <button type="button" id="btnNovo" disabled="true" class="btn btn-danger" style="margin: 0 auto;">NOVO</button>
                           </div>
                         </div>
                       </div>
@@ -194,25 +197,35 @@ if (isset($_SESSION["tipoUsuario"])) {
                 $('#campo').mask('000.000.000-00');
                 //--------------------
 
+                //FUNCAO DO BOTAO DE PESQUISA MODAL
                 $('#btnPes').on("click",function(){
                   
                   var valor = document.getElementById('campo').value;
                   var botao =  document.getElementById('btnNovo');
 
                   $.ajax({
-                    url: '../util/modal_ajax.php',
+                    url: '../util/modal_json.php',
                     type: 'POST',
+                    dataType: 'JSON',
                     data: {cpf:valor},
-                    success: function(retorno){
-
-                       $('#col1').html(retorno);
-                 
+                    success: function(response){
+                    var quant = response.qtd;
+                    if(quant > 0){
+                        $('#col1').html(response.nome);  
+                        botao.disabled = true;  
+                    }else{
+                        $('#col1').html('Nenhum Resultado Encontrado...');
+                        botao.disabled = false;  
+                       }
+                                                                        
                     },error: function(){
                         alert('Error..Servidor nao Encontrado!!');           
                     }
                   });
 
                 });
+               //-------------------------------
+               
             });
         </script>
     </body>
