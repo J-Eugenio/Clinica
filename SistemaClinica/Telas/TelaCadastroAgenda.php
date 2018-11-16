@@ -90,7 +90,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                             <label for="paciente">Paciente:</label>
                             <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
                             <input type="text" class="form-control up" id="paciente" name="paciente" disabled="true" required>
-                            <button type="button" data-toggle="modal" data-target=".modal" style="width: 25px; height: 25px; border-radius: 50%; background: #00beaa; border: none; position: relative; top: -27px; left: -3px; float: right;">
+                            <button id="botaoAbreModal" type="button" data-toggle="modal" data-target="#exampleModal" style="width: 25px; height: 25px; border-radius: 50%; background: #00beaa; border: none; position: relative; top: -27px; left: -3px; float: right;">
                               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                             <input type="hidden" id="CampoId" name="Idpaciente">
@@ -159,19 +159,77 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </div>
                               <hr>
                               <!-- LISTA DADOS PESQUISADOS AQUI -->
-                              <table> 
-                                <tr>
-                                  <td id="col1"></td>
-                                  <td id="col2"></td>
-                                </tr>
-                              </table>
+                              <input type="text" class="form-control" id="col1" style="border-radius: 0; text-align: center;" disabled>
                               <!-- -->
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" id="btnNovo" disabled="true" class="btn btn-success" style="margin: 0 auto;">INSERIR</button>
-                            <button type="button" id="btnInserir" disabled="true" class="btn btn-primary" style="margin: 0 auto;">NOVO</button>
+                            <button type="button" data-dismiss="modal" id="btnInserir" disabled="true" class="btn btn-success" style="margin: 0 auto;">INSERIR</button>
+                            <button type="button" id="btnNovo" disabled="true" data-toggle="modal" data-target="#cadastroPaciente" class="btn btn-primary" style="margin: 0 auto;">NOVO</button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- F I M  M O D A L -->
+
+                  <!-- MODAL DE CADASTRO DE PACIENTE -->
+                 <div class="modal fade" id="cadastroPaciente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">PREENCHE TODOS OS CAMPOS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="conteudo">              
+                              <form action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return VerificaCPF();">
+                                <div class="form-group">
+                                  <label for="nome">Paciente:</label>
+                                  <input class="form-control" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="cpf">CPF:</label>
+                                  <input type="text" class="form-control" name="txtCPF" id="cpf" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" onblur="return VerificaCPF();">
+                                  <span id="error" style="color: red;font-style: italic;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="sexo">Sexo:</label>
+                                  <select class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" >
+                                                  <option value="">-----</option>
+                                                  <option value="Masculino">Masculino</option>
+                                                  <option value="Feminino">Feminino</option>
+                                  </select>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="eCivil">Estado Civil:</label>
+                                  <select class="form-control" name="cxEstadoCivil" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="eCivil" >
+                                                <option value="">-----</option>
+                                                <option value="Casado(a)">Casado(a)</option>
+                                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                                <option value="Viúvo(a)">Viúvo(a)</option>
+                                                <option value="Separado(a)">Separado(a)</option>
+                                  </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="celular">Celular:</label>
+                                <input type="text" class="form-control" name="txtCelular" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="celular" required>
+                              </div>
+
+                              </form>
+                              <hr>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
+                            <button type="button" id="btnNovo" disabled="true" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
                           </div>
                         </div>
                       </div>
@@ -194,6 +252,18 @@ if (isset($_SESSION["tipoUsuario"])) {
 
             $(document).ready(function () {
 
+                var btnInserir = $('#btnInserir');
+                var campoModalCPF = $('#campo');
+
+                btnInserir.click(function(){
+                   console.log($('#col1').html());
+                    $('#paciente').val($('#col1').val());
+                });
+
+                $('#botaoAbreModal').click(function(){
+                  $('#exampleModal').find('input').val('');
+                });
+
                 //MASCARAS DOS CAMPOS
                 $('#DataAtendId').mask('00/00/0000');
                 $('#campo').mask('000.000.000-00');
@@ -202,7 +272,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                 //FUNCAO DO BOTAO DE PESQUISA MODAL
                 $('#btnPes').on("click",function(){
                   
-                  var valor = document.getElementById('campo').value;
+                  var valor = campoModalCPF.val();
                   var botao =  document.getElementById('btnNovo');
                   var botao2 =  document.getElementById('btnInserir');
 
@@ -214,13 +284,17 @@ if (isset($_SESSION["tipoUsuario"])) {
                     success: function(response){
                     var quant = response.qtd;
                     if(quant > 0){
-                        $('#col1').html(response.nome);  
-                        botao2.disabled = true;
-                        botao.disabled = false;
-                    }else{
-                        $('#col1').html('Nenhum Resultado Encontrado...');
-                        botao2.disabled = false;  
+                        $('#col1').val(response.nome);
+                        $('#col1').css("background", "#f3f3f3"); 
+                        $('#col1').css("color", "#181818"); 
                         botao.disabled = true;
+                        botao2.disabled = false;
+                    }else{
+                        $('#col1').val('Nenhum Resultado Encontrado');
+                        $('#col1').css("background", "#A12126");
+                        $('#col1').css("color", "#f3f3f3");
+                        botao.disabled = false;  
+                        botao2.disabled = true;
                        }
                                                                         
                     },error: function(){
@@ -229,7 +303,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                   });
 
                 });
-               //-------------------------------
+               //------------------------------
                
             });
         </script>
