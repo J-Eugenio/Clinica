@@ -67,7 +67,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                     document.getElementById("opcaoUser").style.display = "none";
                 }
                
-            });  
+             });
 
         </script>
  
@@ -90,7 +90,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                             <label for="paciente">Paciente:</label>
                             <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
                             <input type="text" class="form-control up" id="paciente" name="paciente" disabled="true" required>
-                            <button type="button" data-toggle="modal" data-target="#exampleModal" style="width: 25px; height: 25px; border-radius: 50%; background: #00beaa; border: none; position: relative; top: -27px; left: -3px; float: right;">
+                            <button type="button" data-toggle="modal" data-target=".modal" style="width: 25px; height: 25px; border-radius: 50%; background: #00beaa; border: none; position: relative; top: -27px; left: -3px; float: right;">
                               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                             <input type="hidden" id="CampoId" name="Idpaciente">
@@ -170,7 +170,8 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" id="btnNovo" disabled="true" class="btn btn-danger" style="margin: 0 auto;">NOVO</button>
+                            <button type="button" id="btnNovo" disabled="true" class="btn btn-success" style="margin: 0 auto;">INSERIR</button>
+                            <button type="button" id="btnInserir" disabled="true" class="btn btn-primary" style="margin: 0 auto;">NOVO</button>
                           </div>
                         </div>
                       </div>
@@ -190,6 +191,7 @@ if (isset($_SESSION["tipoUsuario"])) {
         <script src="../js/jquery.mask.js"></script>
         <script type="text/javascript">
 
+
             $(document).ready(function () {
 
                 //MASCARAS DOS CAMPOS
@@ -202,6 +204,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                   
                   var valor = document.getElementById('campo').value;
                   var botao =  document.getElementById('btnNovo');
+                  var botao2 =  document.getElementById('btnInserir');
 
                   $.ajax({
                     url: '../util/modal_json.php',
@@ -212,10 +215,12 @@ if (isset($_SESSION["tipoUsuario"])) {
                     var quant = response.qtd;
                     if(quant > 0){
                         $('#col1').html(response.nome);  
-                        botao.disabled = true;  
+                        botao2.disabled = true;
+                        botao.disabled = false;
                     }else{
                         $('#col1').html('Nenhum Resultado Encontrado...');
-                        botao.disabled = false;  
+                        botao2.disabled = false;  
+                        botao.disabled = true;
                        }
                                                                         
                     },error: function(){

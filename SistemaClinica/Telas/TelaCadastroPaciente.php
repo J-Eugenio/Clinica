@@ -59,11 +59,11 @@ if(isset($_SESSION["tipoUsuario"])){
             <form action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return VerificaCPF();">
 
             <div class="row">
-                    <div class="form-group col-md-9" >
+             <div class="form-group col-md-9" >
               <label for="nome">Nome:</label>
               <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
               <input type="text" class="form-control up" name="txtNome" id="nome" required>
-                    </div>
+            </div>
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
@@ -75,6 +75,7 @@ if(isset($_SESSION["tipoUsuario"])){
             <div class="row">
               <div class="form-group col-md-3">
                 <label for="cpf">CPF:</label>
+                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                 <input type="text" class="form-control" name="txtCPF" id="cpf" onblur="return VerificaCPF();">
                 <span id="error" style="color: red;font-style: italic;"></span>
               </div>
@@ -91,7 +92,7 @@ if(isset($_SESSION["tipoUsuario"])){
 
               <div class="form-group col-md-2">
                 <label for="sexo">Sexo:</label>
-                
+                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                 <select class="form-control" name="cxSexo" id="sexo" >
                                 <option value="">-----</option>
                                 <option value="Masculino">Masculino</option>
@@ -111,6 +112,7 @@ if(isset($_SESSION["tipoUsuario"])){
           
                 <div class="form-group col-md-2">
                   <label for="eCivil">Estado Civil:</label>
+                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                   <select class="form-control" name="cxEstadoCivil" id="eCivil" >
                                 <option value="">-----</option>
                                 <option value="Casado(a)">Casado(a)</option>
