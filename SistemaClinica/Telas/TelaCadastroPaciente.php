@@ -34,9 +34,9 @@ if(isset($_SESSION["tipoUsuario"])){
     <script type="text/javascript">
             
             $(document).ready(function(){
-              
+
               var tipo_user = "<?php echo $tipo_user ?>";
-              
+
               if(tipo_user != "Administrador"){
                    document.getElementById("opcaoUser").style.display = "none";
               }

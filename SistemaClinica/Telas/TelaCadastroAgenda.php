@@ -4,20 +4,13 @@ session_start();
 
 
 include_once '../Login/ProtectPaginas.php';
-include_once '../util/daoGenerico.php';
-include_once '../Paciente/Paciente.php';
 include_once '../Atendimento/Atendimento.php';
 include_once '../Medico/Medico.php';
 
- 
 protect();
- 
- 
+
 $medic = new Medico();
 $tipoAten = new Atendimento();
-$paciente = new Paciente();
-$dao = new daoGenerico();
-
 
  
 if (isset($_SESSION["tipoUsuario"])) {
@@ -29,10 +22,7 @@ if (isset($_SESSION["tipoUsuario"])) {
    $tipoAten->retornaTudo($tipoAten);
    $medic->retornaTudo($medic);
  
-   //PARA LISTAR JANELA MODAL
-   $paciente->retornaTudo($paciente);
 
-  
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +51,6 @@ if (isset($_SESSION["tipoUsuario"])) {
  
                 var tipo_user = "<?php echo $tipo_user ?>";
                 var id = "<?php echo $id ?>";
-               
  
                 if (tipo_user != "Administrador") {
                     document.getElementById("opcaoUser").style.display = "none";
@@ -158,15 +147,18 @@ if (isset($_SESSION["tipoUsuario"])) {
                                </span>
                             </div>
                               <hr>
-                              <!-- LISTA DADOS PESQUISADOS AQUI -->
-                              <input type="text" class="form-control" id="col1" style="border-radius: 0; text-align: center;" disabled>
-                              <!-- -->
+                              <!-- LISTA DADOS JSON PESQUISADOS AQUI -->
+                              <table>
+                                <tr>
+                                  <td id="col1"></td>
+                                </tr>
+                              </table>
+                              <!-- --------------------------------- -->
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" data-dismiss="modal" id="btnInserir" disabled="true" class="btn btn-success" style="margin: 0 auto;">INSERIR</button>
-                            <button type="button" id="btnNovo" disabled="true" data-toggle="modal" data-target="#cadastroPaciente" class="btn btn-primary" style="margin: 0 auto;">NOVO</button>
+                            <button type="button" id="btnNovo" data-toggle="modal" data-target="#cadastroPaciente" class="btn btn-primary" style="margin: 0 auto;" data-dismiss="modal" disabled>NOVO</button>
                           </div>
                         </div>
                       </div>
@@ -185,7 +177,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-body">
                             <div class="conteudo">              
-                              <form action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return VerificaCPF();">
+                              <form  action="../Paciente/RegistraPaciente.php" method="POST">
                                 <div class="form-group">
                                   <label for="nome">Paciente:</label>
                                   <input class="form-control" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
@@ -193,16 +185,16 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                                 <div class="form-group">
                                   <label for="cpf">CPF:</label>
-                                  <input type="text" class="form-control" name="txtCPF" id="cpf" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" onblur="return VerificaCPF();">
+                                  <input type="text" class="form-control" name="txtCPF" id="cpf" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
                                   <span id="error" style="color: red;font-style: italic;"></span>
                                 </div>
 
                                 <div class="form-group">
                                   <label for="sexo">Sexo:</label>
                                   <select class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" >
-                                                  <option value="">-----</option>
-                                                  <option value="Masculino">Masculino</option>
-                                                  <option value="Feminino">Feminino</option>
+                                       <option value="">-----</option>
+                                       <option value="Masculino">Masculino</option>
+                                       <option value="Feminino">Feminino</option>
                                   </select>
                                 </div>
 
@@ -221,16 +213,15 @@ if (isset($_SESSION["tipoUsuario"])) {
                               <div class="form-group">
                                 <label for="celular">Celular:</label>
                                 <input type="text" class="form-control" name="txtCelular" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="celular" required>
-                              </div>
-
-                              </form>
+                              </div>              
                               <hr>
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" id="btnNovo" disabled="true" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
+                            <button type="button" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
                           </div>
+                        </form>
                         </div>
                       </div>
                   </div>
@@ -249,63 +240,80 @@ if (isset($_SESSION["tipoUsuario"])) {
         <script src="../js/jquery.mask.js"></script>
         <script type="text/javascript">
 
-
             $(document).ready(function () {
 
                 var btnInserir = $('#btnInserir');
-                var campoModalCPF = $('#campo');
 
-                btnInserir.click(function(){
-                   console.log($('#col1').html());
-                    $('#paciente').val($('#col1').val());
-                });
-
+                // FUNCAO REINICIAR MODAL LIMPO
                 $('#botaoAbreModal').click(function(){
                   $('#exampleModal').find('input').val('');
+                  $('#exampleModal').find('td').text('');
+                  $('#btnNovo').prop('disabled',true);      
                 });
 
                 //MASCARAS DOS CAMPOS
                 $('#DataAtendId').mask('00/00/0000');
-                $('#campo').mask('000.000.000-00');
                 //--------------------
 
-                //FUNCAO DO BOTAO DE PESQUISA MODAL
-                $('#btnPes').on("click",function(){
+                //FUNCAO DO CAMPO DE PESQUISA MODAL  -------->
+
+                $('#campo').on("keyup",function(){
                   
-                  var valor = campoModalCPF.val();
+                  var valor = $('#campo').val();
                   var botao =  document.getElementById('btnNovo');
-                  var botao2 =  document.getElementById('btnInserir');
+                  var qtd;
 
                   $.ajax({
                     url: '../util/modal_json.php',
                     type: 'POST',
-                    dataType: 'JSON',
-                    data: {cpf:valor},
+                    dataType: 'html',
+                    data: {name:valor},
                     success: function(response){
-                    var quant = response.qtd;
-                    if(quant > 0){
-                        $('#col1').val(response.nome);
-                        $('#col1').css("background", "#f3f3f3"); 
-                        $('#col1').css("color", "#181818"); 
-                        botao.disabled = true;
-                        botao2.disabled = false;
-                    }else{
-                        $('#col1').val('Nenhum Resultado Encontrado');
-                        $('#col1').css("background", "#A12126");
-                        $('#col1').css("color", "#f3f3f3");
-                        botao.disabled = false;  
-                        botao2.disabled = true;
-                       }
-                                                                        
+
+                       $('#col1').html(response); 
+                       qtd = $('#col2').text();
+                       
+                       if(qtd > 0){
+
+                          if(valor != ""){
+
+                            $('#col1').html(response);                    
+                            $('#col1').css("color", "#181818"); 
+                            botao.disabled = true;
+
+                            }else{
+                                $('#col1').text("");  
+                            }          
+                         
+                      }else{
+                            $('#col1').html('Nenhum Resultado Encontrado'); 
+                            $('#col1').css("color", "red"); 
+                            botao.disabled = false;      
+                      }      
+                                                                  
                     },error: function(){
                         alert('Error..Servidor nao Encontrado!!');           
                     }
+
                   });
 
                 });
-               //------------------------------
+               //---------------------------------------------------
                
             });
+        </script>
+        <script type="text/javascript">
+
+                        // EVENTO CLIQUE DO BOTAO NOVO
+                        $('#btnNovo').click(function(){
+                          $('#nome').val($('#campo').val());
+                        });
+
+                        // FUNCAO ADICIONAR NOME NO CAMPO
+                         function add(nome){
+                            $('#paciente').val(nome);
+                         }
+
         </script>
     </body>
 </html>
