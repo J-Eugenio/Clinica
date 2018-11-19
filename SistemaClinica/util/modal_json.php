@@ -25,8 +25,5 @@ $dao =  new daoGenerico();
     </tr>
      <?php } ?>
   </table>
-  <script type="text/javascript">
-
-  </script>
 </body>
 </html>
