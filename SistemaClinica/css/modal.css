@@ -9,7 +9,7 @@
     border-radius: 5px;
     color: #f3f3f3;
 }
- 
+
  .modal-dialog{
    font-family: 'Raleway', sans-serif !important;
    width: 400px;
@@ -18,12 +18,12 @@
  .modal-body:hover{
    overflow-y:auto;
  }
- 
-  .fade{
-   opacity:1;
-   -webkit-transaction: opacity 2s linear;
-   transaction:opacity 2s linear;
-   }
+
+ .fade{
+  opacity:1;
+  -webkit-transaction: opacity 2s linear;
+  transaction:opacity 2s linear;
+ }
  
  .close{
     position: relative;
@@ -50,32 +50,20 @@ table{
 .column2 {
   width: 60%;
 }
- 
+
 .conteudo .titulo-table{
     color: #00beaa;
     text-transform: uppercase;
     white-space: nowrap;
     line-height: 0;
 }
+
 .conteudo th{
     padding: 25px 0;
 }
  
 .conteudo tr td{
     padding: 2px 0;
-}
- 
-#btn_add{
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      border: none;
-      background-color: #004840;
-      color: #fff;
-}
- 
-#btn_add:hover{
-       background-color: orange;
 }
  
 .modal-body::-webkit-scrollbar { width:2px; background: #00beaa;}

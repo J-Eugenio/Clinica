@@ -7,7 +7,6 @@
  ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
 require_once '../Paciente/Paciente.php';
-
 include_once '../Login/ProtectPaginas.php';
 protect();
 
@@ -63,7 +62,6 @@ $paciente->retornaTudo($paciente);
                             <th class="column2">Nome</th>
                             <th class="column3">Sexo</th>
                             <th class="column4">Ação</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +72,7 @@ $paciente->retornaTudo($paciente);
                                 <td class="up"><?php echo $dado->SEXO ?></td>
                                 <td class="column4"><a href="../Telas/TelaAtualizarPaciente.php?Idpaciente=<?php echo $dado->IDPACIENTE; ?>">Editar</a> 
                                     <a href="" id="separador">|</a>
-                                    <a href="javascript: if(confirm('Tem certeza que quer deletar o paciente <?php echo $dado->NOME; ?> ? Todas as agendas vinculadas ao paciente serão excluidas!')) 
+                                    <a href="javascript: if(confirm('DESEJA DELETAR O PACIENTE <?php echo $dado->NOME; ?>?  *ATENCAO* : TODAS AS AGENDAS VINCULADAS AO MESMO SERÃO EXCLUIDAS!!')) 
                                        location.href='RemovePaciente.php?Idpaciente=<?php echo $dado->IDPACIENTE; ?>';">Excluir</a>
                                 </td>
                             </tr> 

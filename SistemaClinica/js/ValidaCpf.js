@@ -4,27 +4,27 @@
  * @author Felipe
  */
 
-// TRATAMENTO DE ERROS DO CAMPO CPF
+// TRATAMENTO DE ERROS DOS CAMPOS CPF
 function VerificaCPF() {
-    switch (ValidacaoCPF(document.getElementById("cpf").value)) {
+    switch (ValidacaoCPF($('#cpf').val())) {
         case 0:
-            document.getElementById("error").innerHTML = "";
+            $('#error').innerHTML = "";
             return true;
             break;
         case 1:
-            document.getElementById("error").innerHTML = "CPF Nao Existe!!!";
+            $('#error').innerHTML = "CPF Nao Existe!!!";
             return false;
             break;
         case 2:
-            document.getElementById("error").innerHTML = "Total de Números Inválidos!!!";
+            $('#error').innerHTML = "Total de Números Inválidos!!!";
             return false;
             break;
         case 3:
-            document.getElementById("error").innerHTML = "CPF Inválido!!!";
+            $('#error').innerHTML = "CPF Inválido!!!";
             return false;
             break;
         case 4:
-            document.getElementById("error").innerHTML = "";
+            $('#error').innerHTML = "";
             return false;
             break;
 
@@ -32,10 +32,10 @@ function VerificaCPF() {
 
 }
 
-// FUNÇÃO DE VALIDAÇÃO DO CAMPO CPF
-function ValidacaoCPF(cpfi) {
+// FUNÇÃO DE VALIDAÇÃO DOS CAMPOS CPF
+function ValidacaoCPF(num_cpf) {
    
-    cpf = cpfi.replace(/[^0-9]/g, '');
+    cpf = num_cpf.replace(/[^0-9]/g,'');
 
     if (cpf == "00000000000" ||
             cpf == "11111111111" ||

@@ -158,7 +158,7 @@ class daoGenerico extends ConexaoDB {
    }
 
    public function retornarPorNome($name){
-     $sql = "SELECT NOME FROM PACIENTE WHERE NOME LIKE '%$name%'";
+     $sql = "SELECT IDPACIENTE,NOME FROM PACIENTE WHERE NOME LIKE '%$name%'";
      return $this->executaSQL($sql);
    }
 }

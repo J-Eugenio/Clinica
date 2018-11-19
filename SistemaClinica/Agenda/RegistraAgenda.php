@@ -10,11 +10,11 @@ include_once '../Atendimento/Pesquisar.php';
 
 
 $Metodo = $_POST;
-if (isset($_POST["Idpaciente"]) && $_POST["Idpaciente"] != null) {
 
+
+    $IdPaci = addslashes($Metodo['Idpaciente']);
     $data = addslashes($Metodo["datadeatendimento"]);
     $observacao = addslashes($Metodo['observacao']);
-    $IdPaci = addslashes($Metodo['Idpaciente']);
     $IdMedico = addslashes($Metodo["medico"]);
     $IdTipoAtendimento = addslashes($Metodo['TipoAtendimento']);
 
@@ -32,9 +32,6 @@ if (isset($_POST["Idpaciente"]) && $_POST["Idpaciente"] != null) {
         echo "<script>alert('VOCÊ ESQUECEU DE ALGUM CAMPO OBRIGATÓRIO!! :/');window.history.back(1);</script>";
     }
 
-}else {
-         echo "<script>alert('ESCOLHA UM PACIENTE...CLIQUE EM PESQUISAR!! :/');window.history.back(1);</script>";
-}
 
 
 
