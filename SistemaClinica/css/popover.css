@@ -1,0 +1,21 @@
+	/* Popover Header */
+		.popover-title {	
+		   background-color: #73AD21; 
+	    color: #FFFFFF; 
+	   font-size: 25px;
+	    text-align:center;
+		}
+		 /* Popover */
+		.popover{
+		border-radius: 7px;
+		}
+		
+		/* Popover Body */
+		.popover-content {
+	    background-color: white;
+	    font-weight: bold;
+	    color: red;
+	    padding: 10px;
+	    font-style: italic;
+	}
+					

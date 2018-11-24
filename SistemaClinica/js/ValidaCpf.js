@@ -5,26 +5,26 @@
  */
 
 // TRATAMENTO DE ERROS DOS CAMPOS CPF
-function VerificaCPF() {
-    switch (ValidacaoCPF($('#cpf').val())) {
+function Verificar_CPF(){
+    switch (ValidacaoCPF($('#cpfi').val())) {
         case 0:
-            $('#error').innerHTML = "";
+            $('#cpfi').popover('hide'); 
             return true;
             break;
         case 1:
-            $('#error').innerHTML = "CPF Nao Existe!!!";
+            $('#cpfi').popover('show'); 
             return false;
             break;
         case 2:
-            $('#error').innerHTML = "Total de Números Inválidos!!!";
+            $('#cpfi').popover('show'); 
             return false;
             break;
         case 3:
-            $('#error').innerHTML = "CPF Inválido!!!";
+            $('#cpfi').popover('show'); 
             return false;
             break;
         case 4:
-            $('#error').innerHTML = "";
+            $('#cpfi').popover('hide');  
             return false;
             break;
 

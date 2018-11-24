@@ -40,11 +40,10 @@ if (isset($_SESSION["tipoUsuario"])) {
         <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="estilo.css" rel="stylesheet">
-        <script src="../js/jquery-3.2.1.js"></script>
-        <script src="../js/ValidaCpf.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/popover.css"> 
         <script src="../js/login.js"></script>
         <script type="text/javascript">
  
@@ -67,8 +66,7 @@ if (isset($_SESSION["tipoUsuario"])) {
   <?php include '../util/nav.php' ?>
  
         <div class="container mid">
- 
- 
+
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="titulo-h2">Cadastro Agenda</h2>
@@ -177,16 +175,15 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-body" style="height: 380px;">
                             <div class="conteudo">              
-                              <form id="form_cadastro_pac" onsubmit="return VerificaCPF();">
+                              <form id="form_cadastro_pac" onsubmit="return Verificar_CPF()">
                                 <div class="form-group">
                                   <label for="nome">Paciente:</label>
                                   <input class="form-control up" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
                                   </div>
 
                                 <div class="form-group">
-                                  <label for="cpf">CPF:</label>
-                                  <input type="text1" class="form-control" name="txtCPF" id="cpf" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" onblur="return VerificaCPF();">
-                                  <span id="error" style="color: red;font-style: italic;"></span>
+                                  <label for="cpfi">CPF:</label>
+                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()">
                                 </div>
 
                                 <div class="form-group">
@@ -229,17 +226,19 @@ if (isset($_SESSION["tipoUsuario"])) {
                 </div>
             </div>
         </div>
- 
-    <?php include '../util/footer.php' ?>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/modal.css">
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <script src="../js/jquery-3.2.1.js"></script>
-        <script src="../js/jquery.mask.js"></script>
+        <?php include '../util/footer.php' ?>
+
+        <script src="../js/jquery-3.2.1.js"></script> 
+        <script src="../js/ValidaCpf.js"></script>
+        <script src="../js/jquerymask.js"></script>
         <script type="text/javascript">
-
-            $(document).ready(function () {
+    
+              //MASCARAS DOS CAMPOS
+                $('#DataAtendId').mask('00/00/0000');
+                $('#cel').mask('(00)00000-0000');
+                  $('#cpfi').mask('000.000.000-00');
+                //--------------------
 
                 // FUNCAO REINICIAR MODAL LIMPO
                 $('#botaoAbreModal').click(function(){
@@ -251,17 +250,17 @@ if (isset($_SESSION["tipoUsuario"])) {
                   $('#modal-cadastro-paciente').find('input[type="text1"]').val('');
                   $('#modal-cadastro-paciente').find('select').val($('#opc1').val());
                 });
-                 //--------------------
+                 //--------------------           
+         
+    </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/modal.css"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+        <script type="text/javascript">
 
-
-                //MASCARAS DOS CAMPOS
-                $('#DataAtendId').mask('00/00/0000');
-                $('#cpf').mask('000.000.000-00');
-                $('#cel').mask('(00)00000-0000');
-                //--------------------
-
-                //FUNCAO DO CAMPO DE PESQUISA MODAL  -------->
-                $('#campo').on("keyup",function(){
+          //FUNCAO DO CAMPO DE PESQUISA MODAL  -------->    
+             $('#campo').on("keyup",function(){
 
                   var botao =  document.getElementById('btnNovo');
                   var valor = $('#campo').val();
@@ -303,11 +302,8 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                 });
                //----------------------------------------------
-               
-            });
-        </script>
-        <script type="text/javascript">
-
+           
+          
                         // EVENTO CLIQUE DO BOTAO NOVO
                         $('#btnNovo').click(function(){
                           $('#nome').val($('#campo').val());
@@ -327,8 +323,8 @@ if (isset($_SESSION["tipoUsuario"])) {
                              }else{
                               return true;
                              }
-                        }       
+                        }
 
-        </script>
+        </script>    
     </body>
 </html>
