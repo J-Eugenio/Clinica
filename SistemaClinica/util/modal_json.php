@@ -5,7 +5,7 @@ $dao =  new daoGenerico();
 
   $nome = $_POST['name'];
 
-  $query = $dao->retornarPorNome($nome);
+  $query = $dao->retornarDadosModal($nome);
   $qtd = mysqli_num_rows($query);
   
 ?>
@@ -21,6 +21,7 @@ $dao =  new daoGenerico();
     <tr class="linhas_tabela">
       <td id="col2" hidden><?php echo $qtd; ?></td>
       <td colspan="2"><?php echo $dado['NOME']; ?></td>
+      <td colspan="2"><?php echo $dado['ENDERECO']; ?></td>
       <td><button  data-dismiss="modal" type="button" style="border-radius: 20px; color: black;" onclick="add('<?php echo $dado['NOME'];?>','<?php echo $dado['IDPACIENTE'];?>');"><img src="../img/add3.png"></button></td>
     </tr>
      <?php } ?>

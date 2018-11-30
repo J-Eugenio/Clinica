@@ -157,8 +157,9 @@ class daoGenerico extends ConexaoDB {
     return $this->executaSQL($sql);
    }
 
-   public function retornarPorNome($name){
-     $sql = "SELECT IDPACIENTE,NOME FROM PACIENTE WHERE NOME LIKE '%$name%'";
+   //* LISTAR NOME E ENDERECO NO MODAL CADASTRO AGENDA
+   public function retornarDadosModal($name){
+     $sql = "SELECT IDPACIENTE,NOME,ENDERECO FROM PACIENTE WHERE NOME LIKE '%$name%'";
      return $this->executaSQL($sql);
    }
 }
