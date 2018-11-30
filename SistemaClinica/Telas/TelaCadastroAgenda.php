@@ -146,12 +146,14 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </div>
                               <hr>
                               <!-- LISTA DADOS JSON PESQUISADOS AQUI -->
-                              <table>
+                              <table style="margin-top: -30px;">
                                 <tr>
-                                  <td id="col1"></td>
+                                  <td id="col1">
+                                  </td>
                                 </tr>
                               </table>
                               <!-- --------------------------------- -->
+                              <div class="alert alert-danger" id="msg" style="text-align: center; font-weight: 600; font-size: 16px; visibility: hidden;">Nenhum Resultado Encontrado</div>
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -173,17 +175,18 @@ if (isset($_SESSION["tipoUsuario"])) {
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
+                          <!-- I N I C I O  F O R M -->
+                          <form id="form_cadastro_pac" action="../Paciente/RegistraPacienteRapido.php" method="POST" onsubmit="return Verificar_CPF()">
                           <div class="modal-body" style="height: 380px;">
                             <div class="conteudo">              
-                              <form id="form_cadastro_pac" onsubmit="return Verificar_CPF()">
                                 <div class="form-group">
                                   <label for="nome">Paciente:</label>
                                   <input class="form-control up" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
-                                  </div>
+                                </div>
 
                                 <div class="form-group">
                                   <label for="cpfi">CPF:</label>
-                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()">
+                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!" onblur="return Verificar_CPF()">
                                 </div>
 
                                 <div class="form-group">
@@ -218,6 +221,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                             <button type="submit" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
                           </div>
                         </form>
+                        <!-- F I M  F O R M -->
                         </div>
                       </div>
                   </div>
@@ -281,16 +285,17 @@ if (isset($_SESSION["tipoUsuario"])) {
                           if(valor != ""){
 
                             $('#col1').html(response);                    
-                            $('#col1').css("color", "#181818"); 
+                            $('#col1').css("color", "#181818");
+                            $('#msg').css("visibility","hidden");   
                             botao.disabled = true;
 
                             }else{
-                                $('#col1').text("");  
+                                $('#col1').text("");
+                                $('#msg').css("visibility","hidden");  
                             }          
                          
                       }else{
-                            $('#col1').html('Nenhum Resultado Encontrado'); 
-                            $('#col1').css("color", "red"); 
+                            $('#msg').css("visibility","visible");
                             botao.disabled = false;      
                       }      
                                                                   
