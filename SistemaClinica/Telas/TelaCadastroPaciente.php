@@ -36,8 +36,6 @@ if(isset($_SESSION["tipoUsuario"])){
     <script type="text/javascript">    
             $(document).ready(function(){
 
-               $('#btn').popover('show');   
-
               var tipo_user = "<?php echo $tipo_user ?>";
 
               if(tipo_user != "Administrador"){
@@ -200,8 +198,8 @@ if(isset($_SESSION["tipoUsuario"])){
     <script src="../js/jquerymask.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-      $('#dataNasc').mask('00/00/0000');
       $('#cpfi').mask('000.000.000-00');
+      $('#dataNasc').mask('00/00/0000');
       $('#numero').mask('#########');
       $('#celular').mask('(00) 00000-0000');
       $('#telefone').mask('(00) 0000-0000');

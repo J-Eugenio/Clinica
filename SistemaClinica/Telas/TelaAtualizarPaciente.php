@@ -46,9 +46,11 @@ while ($dado = $paciente->retornaDados("object")) {
     <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/popover.css">
     <link href="estilo.css" rel="stylesheet">
-    <script src="../js/ValidaCpf.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     <script src="../js/jquery-3.2.1.js"></script>
     <script src="../js/login.js"></script>
     
@@ -77,7 +79,7 @@ while ($dado = $paciente->retornaDados("object")) {
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="titulo-h2">Cadastro Paciente</h2>
-            <form action="" method="POST" onsubmit="return VerificaCPF();">
+            <form action="" method="POST" onsubmit="return Verificar_CPF()">
 
             <div class="row">
                     <div class="form-group col-md-9" >
@@ -88,7 +90,8 @@ while ($dado = $paciente->retornaDados("object")) {
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
-              <input type="text" class="form-control" name="txtDataNasc" value="<?php echo date("d/m/Y", strtotime($dado->DATANASC)); ?>" id="dataNasc">
+              <input type="text" class="form-control" name="txtDataNasc" value="<?php echo date("d/m/Y", strtotime($dado->DATANASC)); ?>" 
+              id="dataNasc">
                 <input type="hidden" name="txtDataCadastro" value="<?php echo date("d/m/Y", strtotime($dado->DATACADASTRO)); ?>">
             </div>
 
@@ -96,10 +99,8 @@ while ($dado = $paciente->retornaDados("object")) {
 
             <div class="row">
               <div class="form-group col-md-3">
-                <label for="cpf">CPF:</label>
-                
-                <input type="text" class="form-control" name="txtCPF" value="<?php echo $dado->CPF ?>" id="cpf" onblur="return VerificaCPF();" >
-                <span id="error" style="color: red;font-style: italic;"></span>
+                <label for="cpf">CPF:</label>      
+                <input type="text" class="form-control" name="txtCPF" value="<?php echo $dado->CPF ?>" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()">
               </div>
 
               <div class="form-group col-md-3">
@@ -115,12 +116,11 @@ while ($dado = $paciente->retornaDados("object")) {
               </div>
 
               <div class="form-group col-md-2">
-                <label for="sexo">Sexo:</label>
-                 
+                <label for="sexo">Sexo:</label>        
                 <select class="form-control" name="cxSexo" id="sexo" >
                                 <option value="">-----</option>
-                                <option value="Masculino" <?php if($dado->SEXO == "Masculino") echo 'selected';  ?>>Masculino</option>
-                                <option value="Feminino" <?php if($dado->SEXO == "Feminino") echo 'selected';  ?>>Feminino</option>
+                                <option value="Masculino" <?php if($dado->SEXO == "Masculino") echo 'selected'; ?>>Masculino</option>
+                                <option value="Feminino" <?php if($dado->SEXO == "Feminino") echo 'selected'; ?>>Feminino</option>
                 </select>
               </div>
               
@@ -185,7 +185,7 @@ while ($dado = $paciente->retornaDados("object")) {
                 <div class="form-group col-md-3">
                   <label for="CEP">CEP:</label>
                   
-                  <input type="text" class="form-control" name="txtCEP" value="<?php echo $dado->CEP ?>" id="CEP" >
+                  <input type="text" class="form-control" name="txtCEP" value="<?php echo $dado->CEP ?>" id="cep" >
                 </div>
               </div>
 
@@ -216,8 +216,6 @@ while ($dado = $paciente->retornaDados("object")) {
 
                     <button type="submit" value="Atualizar" name="btnAtualizar" class="bt-atualizar">Salvar</button>
                     <a href="../Paciente/TelaPacienteTable.php"><button type="button" class="bt-voltar">Voltar</button></a>
-
-
                 </form>
 
             </div>
@@ -225,26 +223,26 @@ while ($dado = $paciente->retornaDados("object")) {
         </div>
 
     </div> 
-    
-<?php include '../util/footer.php' ?>
+    <?php } ?>
+    <?php include '../util/footer.php' ?>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/jquery-3.2.1.js"></script>
-    <script src="../js/jquery.mask.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/ValidaCpf.js"></script>
+    <script src="../js/jquerymask.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
+      $('#cpfi').mask('000.000.000-00');
       $('#dataNasc').mask('00/00/0000');
-      $('#cpf').mask('000.000.000-00');
       $('#numero').mask('#########');
       $('#celular').mask('(00) 00000-0000');
       $('#telefone').mask('(00) 0000-0000');
-      $('#CEP').mask('00000-000');
+      $('#cep').mask('00000-000');
     });
     </script>
   </body>
 </html>
-<?php } ?>
 
 <?php
 $metodo = $_POST;
@@ -276,7 +274,7 @@ if (isset($metodo["txtNome"])) {
     $paciente->setValor("NOME", $nome);
     $paciente->setValor("SEXO", $sexo);
     $paciente->setValor("DATANASC",  date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
-    $paciente->setValor("DATACADASTRO",  date("Y-m-d",strtotime(str_replace('/','-',$data_cadastro))));
+    $paciente->setValor("DATACADASTRO", date("Y-m-d",strtotime(str_replace('/','-',$data_cadastro))));
     $paciente->setValor("CPF", $cpf);
     $paciente->setValor("RG", $rg);
     $paciente->setValor("EMAIL", $email);
