@@ -1,8 +1,9 @@
 <?php
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
-
+require_once '../Paciente/Paciente.php';
 include_once '../Login/ProtectPaginas.php';
 include_once '../Atendimento/Atendimento.php';
 include_once '../Medico/Medico.php';
@@ -87,7 +88,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           <div class="form-group col-sm-4">
                             <label for="IdMedic">Médico:</label>
                             <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                            <select class="form-control" name="medico" id="IdMedic" style="text-transform: uppercase; outline: 0;">  
+                            <select class="form-control up" name="medico" id="IdMedic" style="text-transform: uppercase; outline: 0;">  
                               <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
                                   <option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
                               <?php } ?>
@@ -106,7 +107,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                             <div class="form-group col-md-6">
                                 <label for="IdTipoAtend">Tipo Atendimento:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                                <select class="form-control" name="TipoAtendimento" id="IdTipoAtend" >
+                                <select class="form-control up" name="TipoAtendimento" id="IdTipoAtend" >
                                     <?php while ($dadoAtendimento = $tipoAten->retornaDados("object")) { ?>
                                     <option value="<?php echo $dadoAtendimento->IDATENDIMENTO; ?>"><?php echo $dadoAtendimento->TIPOATENDIMENTO; ?></option>
                                     <?php } ?>
@@ -175,8 +176,8 @@ if (isset($_SESSION["tipoUsuario"])) {
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <!-- I N I C I O  F O R M -->
-                          <form id="form_cadastro_pac" action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return Verificar_CPF()">
+                      <!-- I N I C I O  F O R M -->
+                      <form id="form_cadastro_pac"  onsubmit="return Verificar_CPF()">
                           <div class="modal-body" style="height: 380px;">
                             <div class="conteudo">              
                                 <div class="form-group">
@@ -200,7 +201,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                                 <div class="form-group">
                                   <label for="sexo">Sexo:</label>
                                   <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>   
-                                  <select id="select" class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" required>
+                                  <select id="select_sexo" class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" required>
                                        <option id="opc1" value="">-----</option>
                                        <option value="Masculino">Masculino</option>
                                        <option value="Feminino">Feminino</option>
@@ -216,7 +217,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="submit" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
+                            <button type="button" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
                           </div>
                         </form>
                         <!-- F I M  F O R M -->
@@ -247,6 +248,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                 $('#botaoAbreModal').click(function(){
                   $('#modal-escolha-paciente').find('input').val('');
                   $('#modal-escolha-paciente').find('td').text('');
+                  $('#msg').css("visibility","hidden");   
                   $('#btnNovo').prop('disabled',true);      
                 });
                 $('#btnNovo').click(function(){
@@ -299,15 +301,14 @@ if (isset($_SESSION["tipoUsuario"])) {
                       }      
                                                                   
                     },error: function(){
-                        alert('Error..Servidor nao Encontrado!!');           
+                        alert('ERRO..SERVIDOR/CAMINHO NAO ENCONTRADO!!');           
                     }
 
                   });
 
                 });
                //----------------------------------------------
-           
-          
+                                 
                         // EVENTO CLIQUE DO BOTAO NOVO
                         $('#btnNovo').click(function(){
                           $('#nome').val($('#campo').val());
@@ -321,13 +322,36 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                         // FUNCAO SE O CAMPO PACIENTE ESTIVER VAZIO
                          function enviar(){
-                              if($('#paciente').val() == ""){
+                            if($('#paciente').val() == ""){
                               alert("ESCOLHA UM PACIENTE...");
                               return false;
                              }else{
                               return true;
                              }
                         }
+
+        </script>
+        <script type="text/javascript">
+
+           // FUNCAO CADASTRO PACIENTE MODAL
+           $('#btnSalvar').click(function(){
+              
+               $.post("../Paciente/RegistraPacienteModal.php", 
+                
+                $( "#form_cadastro_pac" ).serialize()
+              
+               ,function(data){
+
+                    alert(data);
+                    window.location = '../Telas/TelaCadastroAgenda.php';
+                  
+                }).error(function() {
+
+                    alert("ERRO..SERVIDOR/CAMINHO NAO ENCONTRADO!!");
+                  
+                });
+
+           });
 
         </script>    
     </body>

@@ -32,7 +32,7 @@ $dado = $medico->retornaDados("object");
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
         <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <link rel="stylesheet" type="text/css" href="../css/CadastraAtualiza.css">
+        <link rel="stylesheet" type="text/css" href="../css/CadastroAtualizar.css">
         <link rel="stylesheet" type="text/css" href="../css/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">

@@ -63,7 +63,7 @@ if(isset($_SESSION["tipoUsuario"])){
                     <label for="nomeId">Nome</label> 
                     
                 </p>
-                    <input type="text" name="nome" id="nomeId" required>
+                    <input type="text" name="nome" id="nomeId" style="text-transform: uppercase;" required>
                 
                 
                 <button type="submit" name="salvar" class="bt-salvar">Salvar</button>

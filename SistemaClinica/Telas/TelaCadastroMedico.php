@@ -20,7 +20,7 @@ if(isset($_SESSION["tipoUsuario"])){
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
         <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <link rel="stylesheet" type="text/css" href="../css/CadastraAtualiza.css">
+        <link rel="stylesheet" type="text/css" href="../css/CadastroAtualizar.css">
         <link rel="stylesheet" type="text/css" href="../css/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
@@ -67,13 +67,13 @@ if(isset($_SESSION["tipoUsuario"])){
                     <div class="form-group col-sm-3">
                         <label for="DataNasc">Data de Nascimento:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control" name="dtanascimento" id="DataNasc" required>
+                        <input type="text" class="form-control" name="dtanascimento" id="dataNasc" required>
                     </div>
 
                      <div class="form-group col-sm-3">
                         <label for="conselhoId" >Conselho:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type= "text" class="form-control" name= "conselho" id="conselhoId" required>
+                        <input type= "text" class="form-control up" name= "conselho" id="conselhoId" required>
                     </div>
                 </div>
 
@@ -115,15 +115,17 @@ if(isset($_SESSION["tipoUsuario"])){
 
 <?php include '../util/footer.php' ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src=".../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/jquery-3.2.1.js"></script>
-    <script src="../js/jquery.mask.js"></script>
+    <script src="../js/jquerymask.js"></script>
     <script type="text/javascript">
-      $(document).ready(function(){
-      $('#DataNasc').mask('00/00/0000');
-      $('#telefoneId').mask('(00) 00000-0000');
-    });
+
+          $(document).ready(function(){
+          $('#dataNasc').mask('00/00/0000');
+          $('#telefoneId').mask('(00) 00000-0000');
+          });
+
     </script>
     </body>
 </html>
