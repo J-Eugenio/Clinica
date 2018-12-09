@@ -20,7 +20,7 @@ if(isset($_SESSION["tipoUsuario"])){
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
     <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/CadastraAtualiza.css">
+    <link rel="stylesheet" type="text/css" href="../css/CadastroAtualizar.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
@@ -66,7 +66,8 @@ if(isset($_SESSION["tipoUsuario"])){
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
-                <input type="text" class="form-control" name="txtDataNasc" id="dataNasc">
+              <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+              <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" required>
             </div>
 
             </div>
@@ -75,12 +76,12 @@ if(isset($_SESSION["tipoUsuario"])){
               <div class="form-group col-md-3">
                 <label for="cpf">CPF:</label>
                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                <input type="text" class="form-control" name="txtCPF" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()">
+                <input type="text" class="form-control" name="txtCPF" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()" required>
             </div>
 
               <div class="form-group col-md-3">
                 <label>RG:</label>
-                <input type="text" class="form-control" name="txtRG" id="rg"  >
+                <input type="text" class="form-control" name="txtRG" id="rg">
               </div>
 
               <div class="form-group col-md-4">
@@ -91,7 +92,7 @@ if(isset($_SESSION["tipoUsuario"])){
               <div class="form-group col-md-2">
                 <label for="sexo">Sexo:</label>
                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                <select class="form-control" name="cxSexo" id="sexo" >
+                <select class="form-control" name="cxSexo" id="sexo" required>
                                 <option value="">-----</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Feminino">Feminino</option>
@@ -110,8 +111,7 @@ if(isset($_SESSION["tipoUsuario"])){
           
                 <div class="form-group col-md-2">
                   <label for="eCivil">Estado Civil:</label>
-                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                  <select class="form-control" name="cxEstadoCivil" id="eCivil" >
+                  <select class="form-control" name="cxEstadoCivil" id="eCivil">
                                 <option value="">-----</option>
                                 <option value="Casado(a)">Casado(a)</option>
                                 <option value="Solteiro(a)">Solteiro(a)</option>
@@ -179,8 +179,8 @@ if(isset($_SESSION["tipoUsuario"])){
                 </div>
               </div>
 
-          <button type="submit" value="Cadastrar" name="btnSalvar" class="bt-salvar">Salvar</button>
-          <a href="../Paciente/TelaPacienteTable.php"><button type="button" class="bt-buscar">Buscar</button></a>
+              <button type="submit" value="Cadastrar" name="btnSalvar" class="bt-salvar">Salvar</button>
+              <a href="../Paciente/TelaPacienteTable.php"><button type="button" class="bt-buscar">Buscar</button></a>
 
              </form>
             </div>

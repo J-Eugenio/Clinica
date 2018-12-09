@@ -8,8 +8,8 @@
 session_start();
 require_once '../util/daoGenerico.php';
 require_once '../Paciente/Paciente.php';
-
 include_once '../Login/ProtectPaginas.php';
+
 protect();
 
 if(isset($_SESSION["tipoUsuario"])){
@@ -41,15 +41,16 @@ while ($dado = $paciente->retornaDados("object")) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
     <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/CadastraAtualiza.css">
+    <link rel="stylesheet" type="text/css" href="../css/CadastroAtualizar.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="estilo.css" rel="stylesheet">
+    <script src="..bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/popover.css">
-    <link href="estilo.css" rel="stylesheet">
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="../js/jquery-3.2.1.js"></script>
     <script src="../js/login.js"></script>
@@ -90,23 +91,24 @@ while ($dado = $paciente->retornaDados("object")) {
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
-              <input type="text" class="form-control" name="txtDataNasc" value="<?php echo date("d/m/Y", strtotime($dado->DATANASC)); ?>" 
-              id="dataNasc">
-                <input type="hidden" name="txtDataCadastro" value="<?php echo date("d/m/Y", strtotime($dado->DATACADASTRO)); ?>">
+              <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+              <input type="text" class="form-control" name="txtDataNasc" value="<?php echo date("d/m/Y", strtotime($dado->DATANASC));?>" id="dataNasc">
+              <input type="hidden" name="txtDataCadastro" value="<?php echo date("d/m/Y", strtotime($dado->DATACADASTRO)); ?>">
             </div>
 
             </div>
 
             <div class="row">
               <div class="form-group col-md-3">
-                <label for="cpf">CPF:</label>      
-                <input type="text" class="form-control" name="txtCPF" value="<?php echo $dado->CPF ?>" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()">
+                <label for="cpf">CPF:</label>
+                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>      
+                <input type="text" class="form-control" name="txtCPF" value="<?php echo $dado->CPF ?>" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()" required>
               </div>
 
               <div class="form-group col-md-3">
                 <label>RG:</label>
                 
-                <input type="text" class="form-control" name="txtRG" value="<?php echo $dado->RG ?>" id="rg"  >
+                <input type="text" class="form-control" name="txtRG" value="<?php echo $dado->RG ?>" id="rg" >
               </div>
 
               <div class="form-group col-md-4">
@@ -117,7 +119,8 @@ while ($dado = $paciente->retornaDados("object")) {
 
               <div class="form-group col-md-2">
                 <label for="sexo">Sexo:</label>        
-                <select class="form-control" name="cxSexo" id="sexo" >
+                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+                <select class="form-control" name="cxSexo" id="sexo" required>
                                 <option value="">-----</option>
                                 <option value="Masculino" <?php if($dado->SEXO == "Masculino") echo 'selected'; ?>>Masculino</option>
                                 <option value="Feminino" <?php if($dado->SEXO == "Feminino") echo 'selected'; ?>>Feminino</option>
@@ -136,10 +139,9 @@ while ($dado = $paciente->retornaDados("object")) {
           
                 <div class="form-group col-md-2">
                   <label for="eCivil">Estado Civil:</label>
-                 
-                  <select class="form-control" name="cxEstadoCivil" id="eCivil" >
-                                <option value="">-----</option>
-                                <option value="Casado(a)" <?php if($dado->ESTADOCIVIL == "Casado(a)") echo 'selected';  ?>>Casado(a)</option>
+                  <select class="form-control" name="cxEstadoCivil" id="eCivil">
+                                <option value="" <?php if($dado->ESTADOCIVIL == "") echo 'selected';?>>-----</option>
+                                <option value="Casado(a)" <?php if($dado->ESTADOCIVIL == "Casado(a)") echo 'selected';?>>Casado(a)</option>
                                 <option value="Solteiro(a)" <?php if($dado->ESTADOCIVIL == "Solteiro(a)") echo 'selected';  ?>>Solteiro(a)</option>
                                 <option value="Divorciado(a)" <?php if($dado->ESTADOCIVIL == "Divorciado(a)") echo 'selected';  ?>>Divorciado(a)</option>
                                 <option value="Viúvo(a)" <?php if($dado->ESTADOCIVIL == "Viúvo(a)") echo 'selected';  ?>>Viúvo(a)</option>
@@ -172,14 +174,13 @@ while ($dado = $paciente->retornaDados("object")) {
 
                 <div class="form-group col-md-3">
                   <label for="telefone">Telefone:</label>
-                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                  <input type="text" class="form-control" name="txtTelefone" value="<?php echo $dado->TELEFONE ?>" id="telefone" required>
+                  <input type="text" class="form-control" name="txtTelefone" value="<?php echo $dado->TELEFONE ?>" id="telefone">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="celular">Celular:</label>
-                  
-                  <input type="text" class="form-control" name="txtCelular" value="<?php echo $dado->CELULAR ?>" id="celular" >
+                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+                  <input type="text" class="form-control" name="txtCelular" value="<?php echo $dado->CELULAR ?>" id="celular" required>
                 </div>
 
                 <div class="form-group col-md-3">
@@ -254,7 +255,7 @@ if (isset($metodo["txtNome"])) {
     $datanasc = addslashes($metodo["txtDataNasc"]);
     $data_cadastro = addslashes($metodo["txtDataCadastro"]);
     $cpf = addslashes($metodo["txtCPF"]);
-    $rg = addslashes($metodo["txtRG"]);
+    $rg = $metodo["txtRG"];
     $email = $metodo["txtEmail"];
     $email = preg_replace('/[^[:alnum:]@.]/','', $email);
     $profissao = addslashes($metodo["txtProfissao"]);

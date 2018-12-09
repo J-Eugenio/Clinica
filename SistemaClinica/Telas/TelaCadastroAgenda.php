@@ -35,7 +35,7 @@ if (isset($_SESSION["tipoUsuario"])) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
         <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <link rel="stylesheet" type="text/css" href="../css/CadastraAtualiza.css">
+        <link rel="stylesheet" type="text/css" href="../css/CadastroAtualizar.css">
         <link rel="stylesheet" type="text/css" href="../css/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:600" rel="stylesheet">
@@ -176,42 +176,40 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </button>
                           </div>
                           <!-- I N I C I O  F O R M -->
-                          <form id="form_cadastro_pac" action="../Paciente/RegistraPacienteRapido.php" method="POST" onsubmit="return Verificar_CPF()">
+                          <form id="form_cadastro_pac" action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return Verificar_CPF()">
                           <div class="modal-body" style="height: 380px;">
                             <div class="conteudo">              
                                 <div class="form-group">
                                   <label for="nome">Paciente:</label>
+                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
                                   <input class="form-control up" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
                                 </div>
 
                                 <div class="form-group">
                                   <label for="cpfi">CPF:</label>
-                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!" onblur="return Verificar_CPF()">
+                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>   
+                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!" onblur="return Verificar_CPF()" required>
+                                </div>
+
+                                 <div class="form-group">
+                                  <label for="dataNasc">Data de Nasc:</label>
+                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+                                  <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
                                 </div>
 
                                 <div class="form-group">
                                   <label for="sexo">Sexo:</label>
-                                  <select id="select" class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" >
+                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>   
+                                  <select id="select" class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" required>
                                        <option id="opc1" value="">-----</option>
                                        <option value="Masculino">Masculino</option>
                                        <option value="Feminino">Feminino</option>
                                   </select>
                                 </div>
 
-                                <div class="form-group">
-                                  <label for="eCivil">Estado Civil:</label>
-                                  <select id="select" class="form-control" name="cxEstadoCivil" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="eCivil" >
-                                                <option id="opc1" value="">-----</option>
-                                                <option value="Casado(a)">Casado(a)</option>
-                                                <option value="Solteiro(a)">Solteiro(a)</option>
-                                                <option value="Divorciado(a)">Divorciado(a)</option>
-                                                <option value="Viúvo(a)">Viúvo(a)</option>
-                                                <option value="Separado(a)">Separado(a)</option>
-                                  </select>
-                              </div>
-
                               <div class="form-group">
                                 <label for="celular">Celular:</label>
+                                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>    
                                 <input type="text1" class="form-control" id="cel" name="txtCelular" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="celular" required>
                               </div>              
                             </div>
@@ -241,7 +239,8 @@ if (isset($_SESSION["tipoUsuario"])) {
               //MASCARAS DOS CAMPOS
                 $('#DataAtendId').mask('00/00/0000');
                 $('#cel').mask('(00)00000-0000');
-                  $('#cpfi').mask('000.000.000-00');
+                $('#cpfi').mask('000.000.000-00');
+                $('#dataNasc').mask('00/00/0000');
                 //--------------------
 
                 // FUNCAO REINICIAR MODAL LIMPO

@@ -1,11 +1,8 @@
 <?php
-
-//DATA DE CADASTRO DE CADA PACIENTE
-$data_cadastro = date('d-m-Y');
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+date_default_timezone_set('America/Sao_Paulo');
 session_start();
 require_once '../Paciente/Paciente.php';
-//include_once '../Paciente/ValidarProntuario.php';
 /**
  * Description of Paciente
  *
@@ -13,7 +10,6 @@ require_once '../Paciente/Paciente.php';
  */
 $metodo = $_POST;
 
-//$valida = new ValidarProntuario();
 
 //PEGANDO VALORES DOS CAMPOS
 if (isset($metodo["txtNome"])) {
@@ -36,6 +32,8 @@ if (isset($metodo["txtNome"])) {
     $estado = addslashes($metodo["txtEstado"]);
     $complemento = addslashes($metodo["txtComplemento"]);
     $cep = addslashes($metodo["txtCEP"]);
+    
+   
 
         //SETANDO OS VALORES NO OBJETO
         $paciente = new Paciente();
@@ -43,7 +41,7 @@ if (isset($metodo["txtNome"])) {
         $paciente->setValor("NOME", $nome);
         $paciente->setValor("SEXO", $sexo);
         $paciente->setValor("DATANASC", date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
-        $paciente->setValor("DATACADASTRO",date("Y-m-d",strtotime($data_cadastro)));
+        $paciente->setValor("DATACADASTRO", date('Y-m-d')); //DATA DE CADASTRO DE CADA PACIENTE
         $paciente->setValor("CPF", $cpf);
         $paciente->setValor("RG", $rg);
         $paciente->setValor("EMAIL", $email);
@@ -61,7 +59,7 @@ if (isset($metodo["txtNome"])) {
         $paciente->setValor("CEP", $cep);
 
         if ($paciente->inserir($paciente)){
-            echo "<script>alert('Paciente cadastrado com sucesso!');window.location = '../Telas/TelaCadastroPaciente.php';</script>";
+            echo "<script>alert('Paciente cadastrado com sucesso!');</script>";
         } else {
             echo "<script>alert('Você esqueceu de preencher algum campo obrigatório :/');window.history.back(1);</script>";
         }

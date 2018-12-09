@@ -64,7 +64,7 @@ html, body{
     border-radius: 35px;
 }
 
-.bt-salvar:hover, .bt-buscar:hover{
+.bt-salvar:hover, .bt-buscar:hover, .bt-atualizar:hover, .bt-voltar:hover{
   background: rgba(248,157,99,0.9);
 }
 
