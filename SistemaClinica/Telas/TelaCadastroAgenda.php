@@ -85,20 +85,23 @@ if (isset($_SESSION["tipoUsuario"])) {
                             <input type="hidden" id="CampoId" name="Idpaciente">
                           </div>
  
-                          <div class="form-group col-sm-4">
-                            <label for="IdMedic">Médico:</label>
-                            <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                            <select class="form-control up" name="medico" id="IdMedic" style="text-transform: uppercase; outline: 0;">  
-                              <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
-                                  <option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
-                              <?php } ?>
-                            </select>
+                            
+                            <div class="form-group col-sm-4">
+                              <label for="IdMedic">Médico:</label>
+                              <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+                              <select class="form-control up" name="medico" id="IdMedic" style="text-transform: uppercase; outline: 0;">  
+                                <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
+                                    <option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
+                                <?php } ?>
+                              </select>
                           </div>
- 
-                            <div class="form-group col-sm-3">
-                                <label for="DataAtendId" style="white-space:nowrap;">Data de Atend.:</label>
+
+                           <div class="form-group col-sm-3">
+                                <label for="DataAtendId" style="white-space:nowrap;">Data:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                                <input type="text" class="form-control" name="datadeatendimento" id="DataAtendId" required>
+                               <input type="hidden" class="form-control" name="datadeatendimento" id="DataAtendId" required>
+                               <input type="date" class="form-control" name="datadeatendimento" id="DataAtendId" required>
+                             
                             </div>
                         </div>
  
@@ -334,24 +337,28 @@ if (isset($_SESSION["tipoUsuario"])) {
         <script type="text/javascript">
 
            // FUNCAO CADASTRO PACIENTE MODAL
-           $('#btnSalvar').click(function(){
-              
-               $.post("../Paciente/RegistraPacienteModal.php", 
+           $('#form_cadastro_pac').submit(function(){
+
+            $('#btnSalvar').click(function(){
+
+                  $.post("../Paciente/RegistraPacienteModal.php", 
                 
-                $( "#form_cadastro_pac" ).serialize()
+                    $( "#form_cadastro_pac" ).serialize()
+                  
+                   ,function(data){
+
+                        alert(data);
+                        window.location = '../Telas/TelaCadastroAgenda.php';
+                      
+                    }).error(function() {
+
+                        alert("ERRO..SERVIDOR/CAMINHO NAO ENCONTRADO!!");
+                      
+                    });
+
+            })
               
-               ,function(data){
-
-                    alert(data);
-                    window.location = '../Telas/TelaCadastroAgenda.php';
-                  
-                }).error(function() {
-
-                    alert("ERRO..SERVIDOR/CAMINHO NAO ENCONTRADO!!");
-                  
-                });
-
-           });
+       });
 
         </script>    
     </body>
