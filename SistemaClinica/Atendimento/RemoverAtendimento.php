@@ -13,9 +13,9 @@ if(isset($metodo["atendimento"])){
     $atendimento->valorpk = $id;
     
     if($atendimento->deletar($atendimento)){
-        echo "<script>alert('Atendimento deletada com sucesso!');location.href='TelaAtendimentoTable.php';</script>";
+        echo "<script>alert('ATENDIMENTO EXCLUIDO COM SUCESSO!!');location.href='TelaAtendimentoTable.php';</script>";
     }else{
         
-        echo "<script>alert('Nao foi possivel deletar o atendimento.');location.href='TelaAtendimentoTable.php';</script>";
+        echo "<script>alert('NÃO FOI POSSIVEL EXCLUIR O ATENDIMENTO ESCOLHIDO!!');location.href='TelaAtendimentoTable.php';</script>";
     }
 }

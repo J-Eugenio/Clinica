@@ -16,7 +16,7 @@ class ValidaCadastro extends ConexaoDB {
         if($resultado){
             return $resultado;
         }else{
-            echo "<script>alert('Erro ao tentar buscar usuario no banco!');window.location = '../Telas/TelaCadastroUsuario.php';</script>";
+            echo "<script>alert('ERRO AO TENTAR BUSCAR USUARIO NO BANCO!!');window.location = '../Telas/TelaCadastroUsuario.php';</script>";
         }
         
     }

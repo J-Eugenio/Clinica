@@ -17,13 +17,13 @@ if(isset($Metodo["usuario"])){
     if ($usuario->deletar($usuario)){
         echo "
 		<script>
-			alert('Usuário deletado com sucesso!')
+			alert('USUARIO EXCLUIDO COM SUCESSO!!')
 			location.href='TelaUsuarioTable.php';
 		</script>";
     }else{
         echo "
 		<script>
-			alert('Não foi possivel deletar o usuario.');
+			alert('NÃO FOI POSSIVEL EXCLUIR O USUARIO ESCOLHIDO!!');
 			location.href='TelaUsuarioTable.php';
 		</script>";
     }

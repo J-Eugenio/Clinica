@@ -14,13 +14,13 @@ if(isset($metodo["medico"])){
 if($medico->deletar($medico)){
     echo "
 		<script>
-			alert('Profissional deletado com sucesso!')
+			alert('PROFISSIONAL EXCLUIDO COM SUCESSO!!')
 			location.href='TelaMedicoTable.php';
 		</script>";
 }else{
     echo "
 		<script>
-			alert('Não foi possivel deletar o médico.');
+			alert('NÃO FOI POSSIVEL EXCLUIR O PROFISSIONAL ESCOLHIDO!!');
 			location.href='TelaMedicoTable.php';
 		</script>";
 }   

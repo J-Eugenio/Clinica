@@ -180,7 +180,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </button>
                           </div>
                       <!-- I N I C I O  F O R M -->
-                      <form id="form_cadastro_pac"  onsubmit="return Verificar_CPF()">
+                      <form id="form_cadastro_pac" action="" onsubmit="return Verificar_CPF()">
                           <div class="modal-body" style="height: 380px;">
                             <div class="conteudo">              
                                 <div class="form-group">
@@ -220,7 +220,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
+                            <button type="submit" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
                           </div>
                         </form>
                         <!-- F I M  F O R M -->
@@ -336,10 +336,10 @@ if (isset($_SESSION["tipoUsuario"])) {
         </script>
         <script type="text/javascript">
 
-           // FUNCAO CADASTRO PACIENTE MODAL
-           $('#form_cadastro_pac').submit(function(){
+           // FUNCAO CADASTRO PACIENTE ATRAVES DO MODAL
+           $('#form_cadastro_pac').submit(function(e){
 
-            $('#btnSalvar').click(function(){
+              if(Verificar_CPF()!=false){
 
                   $.post("../Paciente/RegistraPacienteModal.php", 
                 
@@ -347,16 +347,18 @@ if (isset($_SESSION["tipoUsuario"])) {
                   
                    ,function(data){
 
-                        alert(data);
-                        window.location = '../Telas/TelaCadastroAgenda.php';
+                       alert(data);
+                       window.location = '../Telas/TelaCadastroAgenda.php';    
                       
                     }).error(function() {
 
                         alert("ERRO..SERVIDOR/CAMINHO NAO ENCONTRADO!!");
                       
                     });
-
-            })
+              
+               }else{
+                   e.preventDefault();
+               }       
               
        });
 

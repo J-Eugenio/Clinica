@@ -295,9 +295,9 @@ if (isset($metodo["txtNome"])) {
     $paciente->valorpk = $id;
 
 if ($paciente->atualizar($paciente)){
-    echo  "<script>alert('Paciente atualizado com sucesso!');window.location = '../Paciente/TelaPacienteTable.php';</script>";
+    echo  "<script>alert('PACIENTE ATUALIZADO COM SUCESSO!!');window.location = '../Paciente/TelaPacienteTable.php';</script>";
 }else{
-    echo "<script>alert('Não foi modificado nada ainda.');</script>";
+    echo "<script>alert('NENHUM DADO FOI MODIFICADO!!');</script>";
 }
 
 }

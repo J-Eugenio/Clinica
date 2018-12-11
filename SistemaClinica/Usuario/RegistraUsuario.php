@@ -35,14 +35,14 @@ $usuario->setValor("SENHA", $senha);
 $usuario->setValor("TIPOUSUARIO", $tipo);
 
 if ($usuario->inserir($usuario)){
-    echo  "<script>alert('Usuário cadastrado com sucesso!');window.location = '../Telas/TelaCadastroUsuario.php';</script>";
+    echo  "<script>alert('USUARIO CADASTRADO COM SUCESSO!!');window.location = '../Telas/TelaCadastroUsuario.php';</script>";
    
 }else{
-    echo  "<script>alert('Erro ao tentar cadastrar o usuario no Sistema!:/');window.history.back(1);</script>";
+    echo  "<script>alert('ERRO AO TENTAR CADASTRAR USUARIO NO SISTEMA!!:/');window.history.back(1);</script>";
 }
 
 }else{
-   echo "<script>alert('O Login informado ja existe.!');window.location = '../Telas/TelaCadastroUsuario.php';</script>";
+   echo "<script>alert('O LOGIN INFORMADO JA EXISTE!!');window.location = '../Telas/TelaCadastroUsuario.php';</script>";
 }
 
 }

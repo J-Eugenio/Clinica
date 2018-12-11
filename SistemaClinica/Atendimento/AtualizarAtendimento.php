@@ -29,8 +29,8 @@ if(addslashes($metodo3["nome"])){
     $atendimento->valorpk = $id;
     
     if($atendimento->atualizar($atendimento)){
-        echo "<script>alert('Atendimento atualizado com sucesso'); window.location = '../Atendimento/TelaAtendimentoTable.php';</script>";
+        echo "<script>alert('ATENDIMENTO ATUALIZADO COM SUCESSO!!'); window.location = '../Atendimento/TelaAtendimentoTable.php';</script>";
     }else{
-         echo "<script>alert('Atendimento nao atualizado.'); window.history.back(1);</script>";
+         echo "<script>alert('NENHUM DADO FOI MODIFICADO!!'); window.history.back(1);</script>";
     }
 }

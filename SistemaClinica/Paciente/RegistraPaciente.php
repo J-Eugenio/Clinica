@@ -59,9 +59,9 @@ if (isset($metodo["txtNome"])) {
         $paciente->setValor("CEP", $cep);
 
         if ($paciente->inserir($paciente)){
-            echo "<script>alert('Paciente cadastrado com sucesso!');window.location = '../Telas/TelaCadastroPaciente.php';</script>";
+            echo "<script>alert('PACIENTE CADASTRADO COM SUCESSO!!');window.location = '../Telas/TelaCadastroPaciente.php';</script>";
         } else {
-            echo "<script>alert('Você esqueceu de preencher algum campo obrigatório :/');window.history.back(1);</script>";
+            echo "<script>alert('VOCE ESQUECEU DE PREENCHER ALGUM CAMPO OBRIGATÓRIO :/');window.history.back(1);</script>";
         }
     }
 

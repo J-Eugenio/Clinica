@@ -29,7 +29,7 @@ $Metodo = $_POST;
    if ($agenda->inserir($agenda)) {
         echo "<script>alert('AGENDA CADASTRADA COM SUCESSO!!');window.location = '../Agenda/TelaAgendaTable.php';</script>";
     } else {
-        echo "<script>alert('VOCÊ ESQUECEU DE ALGUM CAMPO OBRIGATÓRIO!! :/');window.history.back(1);</script>";
+        echo "<script>alert('VOCE ESQUECEU DE PREENCHER ALGUM CAMPO OBRIGATÓRIO!! :/');window.history.back(1);</script>";
     }
 
 
