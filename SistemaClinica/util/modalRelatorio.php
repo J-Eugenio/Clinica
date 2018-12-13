@@ -216,7 +216,7 @@
                   </div>
   <!-- F I M  M O D A L -->
 
-  <!-- MODAL DE PACIENTES CADASTRADOS POR ANO -->
+  <!-- MODAL DE PACIENTES CADASTRADOS POR MÊS -->
                  <div class="modal fade" id="ModalPacienteMes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -269,7 +269,7 @@
                           <div class="modal-body">
                             <div class="form-group col-sm-6" style="margin: 0 auto; ">
                                 <label for="date">ANO DE CADASTRO:</label>
-                                <input type="text" name="anoRegistroPaciente" id="anoCadastro" class="form-control" style="height: 38px !important;" required>
+                                <input type="text" name="anoCadastroPaciente" id="anoCadastro" class="form-control" style="height: 38px !important;" required>
                             </div>
                           </div>
                           <div class="modal-footer">
