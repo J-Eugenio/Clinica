@@ -132,7 +132,7 @@ if (isset($_SESSION["tipoUsuario"])) {
  
               <!-- MODAL DE ESCOLHA DE PACIENTE -->
                  <div class="modal fade" id="modal-escolha-paciente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div id="modal" class="modal-dialog" role="document">
+                      <div id="modal_escolha" class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM PACIENTE</h5>
@@ -140,25 +140,23 @@ if (isset($_SESSION["tipoUsuario"])) {
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
-                            <div class="conteudo">              
-                            <div class="input-group">
+                           <div class="input-group">
                              <input type="text" id="campo" class="form-control up" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);">
                                 <span class="input-group-btn">      
                                 <button class="btn btn-default" id="btnPes" style="height: 30px;"><i class="fas fa-search"></i></button>
                                </span>
                             </div>
-                              <hr>
+                            <hr>
+                            <ul class="list"><li>NOME</li><li>ENDEREÇO</li></ul>
+                          <div class="modal-body">
                               <!-- LISTA DADOS JSON PESQUISADOS AQUI -->
-                              <table style="margin-top: -30px;">
+                              <table style="margin-top: -25px;">
                                 <tr>
-                                  <td id="col1">
-                                  </td>
+                                  <td id="col1"></td>
                                 </tr>
                               </table>
                               <!-- --------------------------------- -->
                               <div class="alert alert-danger" id="msg" style="text-align: center; font-weight: 600; font-size: 16px; visibility: hidden;">Nenhum Resultado Encontrado</div>
-                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>

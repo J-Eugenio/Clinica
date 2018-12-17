@@ -1,13 +1,29 @@
 /*ESTILIZAÇÃO DO MODAL PACIENTE*/
  .modal-body{
-   height:350px;
+   height:300px;
    overflow: auto;
+ }
+
+ #modal_escolha{
+   width: 450px;
  }
  
 .modal-header{
     background-color: #00beaa;
     border-radius: 5px;
     color: #f3f3f3;
+}
+
+.input-group{
+  margin: 7px 10px 5px 10px;
+}
+
+.list li{
+  color: #00beaa;
+  list-style: none;
+  display: inline-block;
+  margin-left: 18%;
+  margin-right: 12%;
 }
 
  .modal-dialog{
@@ -39,17 +55,10 @@
  /*ESTILIZAÇÃO DA TABELA MODAL PACIENTE*/
 table{
     border-collapse: separate;
-    border-spacing: 10px;
+    border-spacing: 9px;
     text-transform: uppercase;
 }
  
-.column1 {
-  width: 50%;
-}
- 
-.column2 {
-  width: 60%;
-}
 
 .conteudo .titulo-table{
     color: #00beaa;
