@@ -97,7 +97,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
 
                            <div class="form-group col-sm-3">
-                                <label for="DataAtendId" style="white-space:nowrap;">Data:</label>
+                                <label for="DataAtendId" style="white-space:nowrap;">Data de Atendimento:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                                <input type="hidden" class="form-control" name="datadeatendimento" id="DataAtendId" required>
                                <input type="date" class="form-control" name="datadeatendimento" id="DataAtendId" required>
@@ -121,7 +121,8 @@ if (isset($_SESSION["tipoUsuario"])) {
                          <div class="form-group col-sm-6">
                                 <label for="obsId">Observação:</label>
                                 <input type="text" class="form-control" name="observacao" id="obsId">
-                            </div>
+                         </div>
+                         
                          </div>
                         
                         <button type="submit" class="bt-salvar" style="margin-left: 12px;">Salvar</button>

@@ -69,10 +69,8 @@ if (isset($_GET["Idagenda"]) &&  $_GET["Idagenda"] != null){
                 if (tipo_user != "Administrador") {
                     document.getElementById("opcaoUser").style.display = "none";
                 }
-            });
-
+            });  
         </script>
-
     </head>
 
     <body>
@@ -81,58 +79,62 @@ if (isset($_GET["Idagenda"]) &&  $_GET["Idagenda"] != null){
 
         <div class="container mid">
 
-
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="titulo-h2">Atualizar Agenda</h2>
 
-                    <form action="../Agenda/AtualizarAgenda.php?IdAgenda=<?php echo $dados_agenda->IDAGENDA ?>" method="POST">
-                        <div class="row">
-                            <div class="form-group col-sm-6">
+                <!-- FORMULARO DE ATUALIZR AGENDA -->    
+              <form action="../Agenda/AtualizarAgenda.php?IdAgenda=<?php echo $dados_agenda->IDAGENDA ?>" method="POST">
+                        <div class="row col-sm-12">
+                          <div class="form-group col-sm-5">
                                 <label for="nome">Paciente:</label>
                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
                                 <input type="text" class="form-control up" value="<?php echo $dados_paci->NOME ?>" name="paciente" id="paciente"  required>
                                 <input type="hidden" id="CampoId" value="<?php echo $dados_agenda->ID_PACIENTE ?>"  name="Idpaciente">
                             </div>
-
-                            <div class="form-group col-sm-3">
-                                <label for="DataAtendId">Data de Atendimento:</label>
-                                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                                <input type="text" class="form-control" value="<?php echo date("d/m/Y", strtotime($dados_agenda->DATADEATENDIMENTO)); ?>" name="datadeatendimento" id="DataAtendId" required>
-                            </div>
-
-                            <div class="form-group col-sm-3">
+ 
+                            
+                            <div class="form-group col-sm-4">
                                 <label for="IdMedic" >Medico:</label>
                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                                <select class="form-control" name="medico" id="IdMedic" >  
+                                <select class="form-control up" name="medico" id="IdMedic" >  
                                 <?php while ($dadoMedic = $medic->retornaDados("object")) { ?>  
                                     <option value="<?php echo $dadoMedic->IDMEDICO; ?>"><?php echo $dadoMedic->NOME; ?></option>
                                 <?php } ?>
                                 </select>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-5">
+                           <div class="form-group col-sm-3">
+                                <label for="DataAtendId">Data de Atendimento:</label>
+                                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
+                                <input type="date" class="form-control" value="<?php echo $dados_agenda->DATADEATENDIMENTO; ?>" name="datadeatendimento" id="DataAtendId" required>
+                            </div>
+                        </div>
+ 
+                        <div class="row col-sm-12" style="margin-top: 25px;">
+                         
+                           <div class="form-group col-md-6">
                                 <label for="telefoneId">Tipo de Atendimento:</label>
                                 <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                                <select class="form-control" name="tipoatendimento" id="IdTipoAtend" >
+                                <select class="form-control up" name="tipoatendimento" id="IdTipoAtend" >
                                     <?php while ($dadoAtendimento = $tipoAten->retornaDados("object")) { ?>
                                     <option value="<?php echo $dadoAtendimento->IDATENDIMENTO; ?>"><?php echo $dadoAtendimento->TIPOATENDIMENTO; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
 
-                            <div class="form-group col-sm-7">
+                            <div class="form-group col-sm-6">
                                 <label for="obsId">Obervação:</label>
-                                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
                                 <input type="text" class="form-control" value="<?php echo $dados_agenda->OBSERVACAO ?>" name="observacao" id="obsId">
                             </div>
-                        </div>
-
-                        <button type="submit" class="bt-salvar">Salvar</button>
+                         
+                         </div>
+                        
+                        <button type="submit" class="bt-salvar" style="margin-left: 12px;">Salvar</button>
                         <a href="../Agenda/TelaAgendaTable.php"><button type="button" class="bt-buscar">Voltar</button></a>
-                    </form>
+ 
+                </form>
+            <!-- FIM DO FORMULARO -->  
 
                 </div>
             </div>
@@ -145,7 +147,7 @@ if (isset($_GET["Idagenda"]) &&  $_GET["Idagenda"] != null){
         <script src="../js/jquery-3.2.1.js"></script>
         <script src="../js/jquery.mask.js"></script>
         <script type="text/javascript">
-                $(document).ready(function () {
+                $(document).ready(function (){
                     $('#DataAtendId').mask('00/00/0000');
                 });
         </script>
