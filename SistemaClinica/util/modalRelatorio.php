@@ -1,3 +1,19 @@
+<link rel="stylesheet" type="text/css" href="../css/modal_relatorio_paciente.css">
+<script type="text/javascript">
+   function setar(id,nome){
+     $('#Idbtn').val(id);
+     $('#selecionado').text(nome.toUpperCase());
+     $('#icon').css("visibility","visible");
+     document.getElementById('Idbtn').disabled = false;
+   }
+   function fechar(){
+     $('#Idbtn').val('');
+     $('#selecionado').text('');
+     $('#icon').css("visibility","hidden");
+     document.getElementById('Idbtn').disabled = true;
+   }
+</script>
+  <!-------------------------------------------- MODAIS TELA DE RELATORIO ------------------------------------------------------------------>
 	<!-- MODAL DE ESCOLHA DE MEDICO -->
                  <div class="modal fade" id="ModalMedico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -33,22 +49,28 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">SELECIONE UM PACIENTE</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <form action="../Relatorio/Agenda/RelatorioAgendaPaciente.php" method="POST" target="_blank">
-                          <div class="modal-body">
-                            <div class="conteudo">              
-                              <select class="custom-select" style="text-transform: uppercase; height: 38px !important;" name="paciente">
-                                <?php while ($dadoPac = $pac->retornaDados("object")) { ?>  
-                                <option value="<?php echo $dadoPac->IDPACIENTE; ?>"><?php echo $dadoPac->NOME; ?></option>
-                                <?php  }  ?>
-                              </select>
+                          <div class="modal-body-pac">
+                            <div class="conteudo">
+                            <table>
+                                 <?php while ($dadoPac = $pac->retornaDados("object")) { ?>  
+                                 <tr onclick="setar('<?php echo $dadoPac->IDPACIENTE;?>','<?php echo $dadoPac->NOME;?>');">
+                                 <td class="form-control up" id="cl1" style="width: 337px;padding-top: 0px;"><?php echo $dadoPac->NOME;?></td>
+                                 </tr>
+                                 <?php } ?>
+                            </table>              
                             </div>
                           </div>
+                          <div class="modal-footer" style="height: 50px;">
+                            <img src="../img/confirm.png" id="icon" style="visibility: hidden;">
+                            <label id="selecionado" style="margin: 0 auto;"></label>
+                          </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-success" style="margin: 0 auto;">GERAR RELATÓRIO</button>
+                            <button type="submit" name="Idpac" id="Idbtn" class="btn btn-success" style="margin: 0 auto;">GERAR RELATÓRIO</button>
                           </div>
                         </form>
                         </div>
@@ -161,9 +183,9 @@
                           <div class="modal-body">
                             <div class="conteudo">
                             <div class="row">             
-                              <div class="form-group col-sm-6" style="margin: 0 auto; ">
-                                <label for="date">DATA DE CADASTRO:</label>
-                                <input class="form-control" type="date" name="data_registro_paciente" id="date" style="height: 38px !important;" value="<?php echo date("Y-m-d"); ?>" required>
+                              <div class="form-group col-sm-6" style="margin: 0 auto;">
+                                <label for="date">DATA DO CADASTRO:</label>
+                                <input class="form-control" type="date" name="data_registro_paciente" id="date" style="width: 165px !important;" value="<?php echo date("Y-m-d");?>" required>
                               </div>
                             </div>
                             </div>

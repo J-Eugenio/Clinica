@@ -3,7 +3,7 @@
 	include_once("../../BancoDeDados/conexao.php");
 
 	//RELATORIO POR PACIENTE
-	$ID_pac = $_POST['paciente'];
+	$ID_pac = $_POST['Idpac'];
 
 	$html = '<table border="1" cellspacing="0" cellpadding="10" style="border-collapse: collapse; width:100%; white-space: nowrap; z-index: 1;">';	
 	$html .= '<thead style="border-bottom: 1px solid black; font-size: 14px;">';

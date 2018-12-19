@@ -1,0 +1,42 @@
+.modal-body-pac{
+   padding:10px;
+   height:350px;
+   overflow: auto;
+ }
+ .modal-body-pac:hover{
+   overflow-y:auto;
+ }
+
+.modal-body-pac::-webkit-scrollbar { width:2px; background: #00beaa;}
+.modal-body-pac::-webkit-scrollbar-track { background: #4e4e4e; }
+.modal-body-pac::-webkit-scrollbar-thumb { border-radius:20px; background: #00beaa;}
+.modal-body-pac::-webkit-scrollbar-corner { visibility: hidden;}
+.modal-body-pac::-webkit-resizer { visibility: hidden; }
+
+ 
+.modal-header{
+    background-color: #00beaa;
+    border-radius: 5px;
+    color: #f3f3f3;
+}
+
+  #cl1{
+    cursor:pointer;
+    border:none;
+  }
+  .modal-dialog{
+    width: 360px;
+  }
+
+  #cl1:hover{
+    background-color: #DCDCDC;
+  }
+
+  #icon{
+    width: 28px;
+    position: absolute;
+    display: block;
+    right: 84%;
+    margin-top: -2px;
+    opacity: 0px;
+  }
