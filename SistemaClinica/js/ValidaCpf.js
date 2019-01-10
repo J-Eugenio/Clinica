@@ -4,7 +4,7 @@
  * @author Felipe
  */
 
-// TRATAMENTO DE ERROS DOS CAMPOS CPF
+// TRATAMENTO DE ERROS
 function Verificar_CPF(){
     switch (ValidacaoCPF($('#cpfi').val())) {
         case 0:
