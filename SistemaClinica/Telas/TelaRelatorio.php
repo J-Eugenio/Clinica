@@ -15,11 +15,12 @@ if(isset($_SESSION["tipoUsuario"])){
    $medic = new Medico();
    $pac = new Paciente();
    $tipoAten = new Atendimento();
+
    //LISTAR NO COMBOBOX DO MODAL
    $medic->retornaTudo($medic);
-   $pac->retornaTudo($pac);
    $tipoAten->retornaTudo($tipoAten);
 
+   $pac->retornaTudo($pac);
 
 ?>
 <!DOCTYPE html>
@@ -33,8 +34,8 @@ if(isset($_SESSION["tipoUsuario"])){
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
+    <link rel="stylesheet" type="text/css" href="../css/modal_relatorio_paciente.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   	<style type="text/css">
     .center{
       width: 100%;
@@ -79,9 +80,9 @@ if(isset($_SESSION["tipoUsuario"])){
       <div class="form-group col-sm-6 c1">
         <h2>Agenda</h2>
 				<a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalMedico">POR PROFISSIONAL</a>
-				<a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" id="p" data-target="#ModalPaciente" onclick="fechar();">POR PACIENTE</a>
+				<a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPaciente" onclick="limparModal();">POR PACIENTE</a>
 				<a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalAtendimento">POR ATENDIMENTO</a>
-        <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalAgendaData">POR DATA</a>
+        <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalAgendaData" onclick="zerar();">POR DATA</a>
       </div>
 
       <div class="form-group col-sm-6 c2">
@@ -89,7 +90,7 @@ if(isset($_SESSION["tipoUsuario"])){
         <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalSexo">POR SEXO</a>
         <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPacienteDia">POR DIA</a>
         <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPacienteMes">POR MES</a>
-        <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPacienteAno">POR ANO</a>
+        <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPacienteAno"  onclick="zerar();">POR ANO</a>
         <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPacienteMesNiver">MES NASCIMENTO</a>
         <a class="btn btn-light btn-lg btn-block bt" data-toggle="modal" data-target="#ModalPacienteAnoNiver">ANO NASCIMENTO</a>
       </div>
@@ -104,7 +105,9 @@ if(isset($_SESSION["tipoUsuario"])){
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <?php include '../util/footer.php' ?>
+
 </body>
 </html>

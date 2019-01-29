@@ -162,4 +162,9 @@ class daoGenerico extends ConexaoDB {
      $sql = "SELECT IDPACIENTE,NOME,ENDERECO FROM PACIENTE WHERE NOME LIKE '%$name%'";
      return $this->executaSQL($sql);
    }
+
+    public function retornarPesquisaModal($name){
+     $sql = "SELECT IDPACIENTE,NOME FROM PACIENTE WHERE NOME LIKE '%$name%'";
+     return $this->executaSQL($sql);
+   }
 }

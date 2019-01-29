@@ -1,6 +1,6 @@
 .modal-body-pac{
    padding:10px;
-   height:350px;
+   height:330px;
    overflow: auto;
  }
  .modal-body-pac:hover{
@@ -24,8 +24,9 @@
     cursor:pointer;
     border:none;
   }
+
   .modal-dialog{
-    width: 360px;
+    width: 370px;
   }
 
   #cl1:hover{
