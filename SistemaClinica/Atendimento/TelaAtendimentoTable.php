@@ -39,12 +39,12 @@ $atendimento->retornaTudo($atendimento);
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                   $("#opcaoUser").remove();
               }
                                
             });
         
-        </script>
+    </script>
     
     </head>
     <body ondragstart="return false;">
@@ -69,7 +69,7 @@ $atendimento->retornaTudo($atendimento);
             <td class="up"> <?php echo $dado->TIPOATENDIMENTO ?> </td>
             <td><a href="../Telas/TelaAtualizarAtendimento.php?atendimento=<?php echo $dado->IDATENDIMENTO?>">Editar</a> 
                 <a href="" id="separador">|</a>
-                <a href="javascript: if(confirm('Tem certeza que quer deletar o usuário <?php echo $dado->IDATENDIMENTO; ?> ?')) 
+                <a href="javascript: if(confirm('DESEJA DELETAR O ATENDIMENTO <?php echo $dado->TIPOATENDIMENTO; ?> ?')) 
                     location.href='RemoverAtendimento.php?atendimento=<?php echo $dado->IDATENDIMENTO  ?>';">Excluir</a>
             </td>
         </tr>

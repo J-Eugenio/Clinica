@@ -11,7 +11,6 @@ if(isset($_SESSION["tipoUsuario"])){
     $tipo_user = $_SESSION["tipoUsuario"];
 }
 
-
 $medico = new Medico();
 $metodo = $_GET;
 if(isset($metodo["medico"])){
@@ -20,7 +19,9 @@ if(isset($metodo["medico"])){
     $medico->valorpk = $id;
     $medico->pesquisarID($medico);
 }
+
 $dado = $medico->retornaDados("object");
+
 ?>
 
 <html lang="pt-br">
@@ -49,7 +50,7 @@ $dado = $medico->retornaDados("object");
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                  $("#opcaoUser").remove();
               }
                                
             });

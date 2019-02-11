@@ -7,10 +7,6 @@ protect();
 
 if(isset($_SESSION["tipoUsuario"])){
     $tipo_user = $_SESSION["tipoUsuario"];
-    
-    if ($tipo_user != "Administrador"){
-        header("Location: ../Telas/Home.php");
-    }
 }
 
 ?>
@@ -39,7 +35,7 @@ if(isset($_SESSION["tipoUsuario"])){
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                   $("#opcaoUser").remove();
               }
                                
             });

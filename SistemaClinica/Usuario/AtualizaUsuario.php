@@ -29,9 +29,9 @@ $usuario->setValor("TIPOUSUARIO", $tipo);
 $usuario->valorpk = $id;
 
 if ($usuario->atualizar($usuario)){
-    echo  "<script>alert('Usuário atualizado com sucesso!');window.location = './TelaUsuarioTable.php';</script>";
+    echo  "<script>alert('USUARIO ATUALIZADO COM SUCESSO!!');window.location = './TelaUsuarioTable.php';</script>";
 }else{
-    echo "<script>alert('Não foi modificado nada ainda.');</script>";
+    echo "<script>alert('NÃO FOI MODIFICADO NADA AINDA!!.');</script>";
 }
 
 }

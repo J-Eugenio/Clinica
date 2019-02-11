@@ -43,12 +43,12 @@ $usuario->retornaTudo($usuario);
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                  $("#opcaoUser").remove();
               }
                                
             });
         
-        </script>
+    </script>
     
     </head>
     <body ondragstart="return false;">
@@ -76,7 +76,7 @@ $usuario->retornaTudo($usuario);
             <td><?php echo $dado->TIPOUSUARIO ?></td>
             <td class="column5"><a href="../Telas/TelaAtualizarUsuario.php?usuario=<?php echo $dado->IDUSUARIO; ?>">Editar</a> 
                 <a href="" id="separador">|</a>
-                <a href="javascript: if(confirm('Deseja realmente deletar o paciente <?php echo $dado->NOME; ?> ?')) 
+                <a href="javascript: if(confirm('DESEJA DELETAR OS DADOS DO USUARIO <?php echo $dado->NOME; ?> ?')) 
                     location.href='RemoveUsuario.php?usuario=<?php echo $dado->IDUSUARIO; ?>';">Excluir</a>
                 </td>
           </tr> 

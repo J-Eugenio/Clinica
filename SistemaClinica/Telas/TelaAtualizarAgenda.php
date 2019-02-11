@@ -67,7 +67,7 @@ if (isset($_GET["Idagenda"]) &&  $_GET["Idagenda"] != null){
                 var tipo_user = "<?php echo $tipo_user ?>";
 
                 if (tipo_user != "Administrador") {
-                    document.getElementById("opcaoUser").style.display = "none";
+                    $("#opcaoUser").remove();
                 }
             });  
         </script>

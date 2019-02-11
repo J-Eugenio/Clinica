@@ -7,7 +7,7 @@
    overflow-y:auto;
  }
 
-.modal-body-pac::-webkit-scrollbar { width:2px; background: #00beaa;}
+.modal-body-pac::-webkit-scrollbar { width:4px; background: #00beaa;}
 .modal-body-pac::-webkit-scrollbar-track { background: #4e4e4e; }
 .modal-body-pac::-webkit-scrollbar-thumb { border-radius:20px; background: #00beaa;}
 .modal-body-pac::-webkit-scrollbar-corner { visibility: hidden;}

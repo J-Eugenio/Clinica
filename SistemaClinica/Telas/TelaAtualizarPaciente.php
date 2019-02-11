@@ -4,7 +4,7 @@
  *
  * @author Felipe
  */
- ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
 require_once '../util/daoGenerico.php';
 require_once '../Paciente/Paciente.php';
@@ -62,15 +62,12 @@ while ($dado = $paciente->retornaDados("object")) {
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                   $("#opcaoUser").remove();
               }
-
-              //VERIFICAR CAMPO CPF AO CARREGAR PAGINA
-              return Verificar_CPF();
                                
             });
         
-        </script>
+    </script>
 
   </head>
   <body>

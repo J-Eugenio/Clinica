@@ -3,16 +3,11 @@ ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../t
 session_start();
 require_once '../util/daoGenerico.php';
 require_once '../Usuario/Usuario.php';
-
 include_once '../Login/ProtectPaginas.php';
 protect();
 
 if(isset($_SESSION["tipoUsuario"])){
     $tipo_user = $_SESSION["tipoUsuario"];
-    
-    if ($tipo_user != "Administrador"){
-        header("Location: ../Telas/Home.php");
-    }
 }
 
 $usuario = new Usuario();
@@ -54,12 +49,12 @@ $dado = $usuario->retornaDados("object");
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                  $("#opcaoUser").remove();
               }
                                
             });
         
-        </script>
+     </script>
     
 </head>
 <body ondragstart="return false;">

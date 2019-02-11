@@ -46,21 +46,7 @@ if (isset($_SESSION["tipoUsuario"])) {
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/popover.css"> 
         <script src="../js/login.js"></script>
-        <script type="text/javascript">
- 
-            $(document).ready( function () {
- 
-                var tipo_user = "<?php echo $tipo_user ?>";
-                var id = "<?php echo $id ?>";
- 
-                if (tipo_user != "Administrador") {
-                    document.getElementById("opcaoUser").style.display = "none";
-                }
-               
-             });
-
-        </script>
- 
+        
     </head>
     <body>
  
@@ -235,6 +221,16 @@ if (isset($_SESSION["tipoUsuario"])) {
         <script src="../js/ValidaCpf.js"></script>
         <script src="../js/jquerymask.js"></script>
         <script type="text/javascript">
+
+              $(document).ready( function () {
+   
+                  var tipo_user = "<?php echo $tipo_user ?>";
+
+                  if(tipo_user != "Administrador"){
+                     $('#opcaoUser').remove();
+                  }
+                 
+               });
     
               //MASCARAS DOS CAMPOS
                 $('#DataAtendId').mask('00/00/0000');
@@ -245,7 +241,6 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                 // FUNCAO REINICIAR MODAL LIMPO
                 $('#botaoAbreModal').click(function(){
-                  $('#campo').focus();  
                   $('#modal-escolha-paciente').find('input').val('');
                   $('#modal-escolha-paciente').find('td').text('');
                   $('#msg').css("visibility","hidden");   
@@ -335,35 +330,38 @@ if (isset($_SESSION["tipoUsuario"])) {
         <script type="text/javascript">
 
            // FUNCAO CADASTRO PACIENTE ATRAVES DO MODAL
-           $('#btnSalvar').click(function(){
+           $('#btnSalvar').click(function(e){
 
-            var nome = $('#nome').val();
-            var dtanasc = $('#dataNasc').val();
-
-            if(nome == ''){
+            if($('#nome').val() == ''){
                 $('#nome').css("border","1px solid red");
             }else{
-              if(dtanasc == ''){
+              if($('#dataNasc').val() == ''){
                  $('#dataNasc').css("border","1px solid red");
               }else{
 
-                    $.post("../Paciente/RegistraPacienteModal.php", 
-                
-                    $( "#form_cadastro_pac" ).serialize()
-                  
-                   ,function(data){
+                    //-------CONDICAO SE CPF FOR VERDADEIRO---------
+                     if(Verificar_CPF() != false){ 
 
-                    //CONDICAO PARA CADASTRO DE DADOS DO MODAL
-                    if(data == 'true'){
-                         alert('PACIENTE CADASTRADO COM SUCESSO!!');
-                         window.location = '../Telas/TelaCadastroAgenda.php';    
-                     }else{ 
-                         alert('ERRO AO CADASTRAR PACIENTE!!');
-                         $('#modal-cadastro-paciente').modal('show');
-                     }
+                        $.post("../Paciente/RegistraPacienteModal.php", 
+                  
+                      $( "#form_cadastro_pac" ).serialize()
                     
+                     ,function(data){
+
+                      //CONDICAO PARA CADASTRO DE DADOS DO MODAL
+                      if(data == 'true'){
+                           alert('PACIENTE CADASTRADO COM SUCESSO!!');
+                           window.location = '../Telas/TelaCadastroAgenda.php';    
+                       }else{ 
+                           alert('ERRO AO CADASTRAR PACIENTE!!');
+                           $('#modal-cadastro-paciente').modal('show');
+                       }
                       
-                    });
+                        
+                      });
+
+                     }
+                   //---------------------------------------------
               }
             }
         

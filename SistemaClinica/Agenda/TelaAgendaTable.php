@@ -2,7 +2,6 @@
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
 require_once '../Agenda/Agenda.php';
-
 include_once '../Login/ProtectPaginas.php';
 protect();
 
@@ -39,12 +38,12 @@ $dados = $agenda->ListarAgendas();
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                   $("#opcaoUser").remove();
               }
                                
             });
         
-        </script>
+    </script>
     
     </head>
     <body ondragstart="return false;">
@@ -74,7 +73,7 @@ $dados = $agenda->ListarAgendas();
             <td> <?php echo $dado['TIPODEATENDIMENTO'] ?>  </td>
             <td><a href="../Telas/TelaAtualizarAgenda.php?Idagenda=<?php echo $dado['ID'] ?>">Editar</a> 
                 <a href="" id="separador">|</a>
-                <a href="javascript: if(confirm('Tem certeza que deseja deletar o agendamento de <?php echo $dado['NOMEDOPACIENTE'] ?> ?')) 
+                <a href="javascript: if(confirm('DESEJA DELETAR O AGENDAMENTO DE <?php echo $dado['NOMEDOPACIENTE'] ?> ?')) 
                     location.href='RemoverAgenda.php?agenda=<?php echo $dado['ID']?>';">Excluir</a>
             </td>
         </tr>

@@ -34,15 +34,17 @@ if(isset($_SESSION["tipoUsuario"])){
     <script src="../js/jquery-3.2.1.js"></script>
     <script src="../js/login.js"></script>
     <script type="text/javascript">    
+
             $(document).ready(function(){
 
               var tipo_user = "<?php echo $tipo_user ?>";
 
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                   $("#opcaoUser").remove();
               }
                                
             });
+            
     </script>
 
   </head>
@@ -55,13 +57,13 @@ if(isset($_SESSION["tipoUsuario"])){
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="titulo-h2">Cadastro Paciente</h2>
-            <form action="../Paciente/RegistraPaciente.php" method="POST">
+            <form action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return Verificar_CPF();">
 
             <div class="row">
              <div class="form-group col-md-9" >
               <label for="nome">Nome:</label>
               <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-              <input type="text" class="form-control" name="txtNome" id="nome" autocomplete="off" required style="text-transform: uppercase;">
+              <input type="text" class="form-control up" name="txtNome" id="nome" autocomplete="off" required>
             </div>
           
             <div class="form-group col-md-3">
@@ -76,7 +78,7 @@ if(isset($_SESSION["tipoUsuario"])){
               <div class="form-group col-md-3">
                 <label for="cpf">CPF:</label>
                 <input type="text" class="form-control" name="txtCPF" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()" autocomplete="off">
-            </div>
+              </div>
 
               <div class="form-group col-md-3">
                 <label>RG:</label>

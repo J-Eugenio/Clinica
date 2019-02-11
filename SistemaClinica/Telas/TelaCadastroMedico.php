@@ -28,19 +28,19 @@ if(isset($_SESSION["tipoUsuario"])){
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="estilo.css" rel="stylesheet">
         <script src="../js/jquery-3.2.1.js"></script>
-	<script src="../js/login.js"></script>
-	
+    	<script src="../js/login.js"></script>
+    	
         <script type="text/javascript">
-            
-            $(document).ready(function(){
-              
-              var tipo_user = "<?php echo $tipo_user ?>";
-              
-              if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
-              }
-                               
-            });
+                
+                $(document).ready(function(){
+                  
+                  var tipo_user = "<?php echo $tipo_user ?>";
+                  
+                  if(tipo_user != "Administrador"){
+                       $("#opcaoUser").remove();
+                  }
+                                   
+                });
         
         </script>
 

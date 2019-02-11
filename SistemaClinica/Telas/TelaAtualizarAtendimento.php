@@ -9,10 +9,6 @@ protect();
 
 if(isset($_SESSION["tipoUsuario"])){
     $tipo_user = $_SESSION["tipoUsuario"];
-    
-    if ($tipo_user != "Administrador"){
-        header("Location: ../Telas/Home.php");
-    }
 }
 
 $atendimento = new Atendimento();
@@ -54,12 +50,12 @@ $dado = $atendimento->retornaDados("object");
               var tipo_user = "<?php echo $tipo_user ?>";
               
               if(tipo_user != "Administrador"){
-                   document.getElementById("opcaoUser").style.display = "none";
+                   $("#opcaoUser").remove();
               }
                                
             });
         
-        </script>
+     </script>
     
 </head>
 <body ondragstart="return false;">
@@ -76,7 +72,7 @@ $dado = $atendimento->retornaDados("object");
                     <label for="nome">Nome</label> 
                     
                 </p>
-                <input type="text" name="nome" value="<?php echo $dado->TIPOATENDIMENTO ?>" id="nomeId" required>
+                <input type="text" name="nome" value="<?php echo $dado->TIPOATENDIMENTO ?>" id="nomeId" autocomplete="off" required>
                 
             
                 <button type="submit" name="atualizar" class="bt-att">Salvar</button>
