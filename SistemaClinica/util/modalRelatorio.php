@@ -39,25 +39,26 @@
                     data: {campo:valor},
                     success: function(response){
 
-                      if(valor != ''){
+                              if(valor != ''){
 
-                         $('.tabela tr').each(function(){
-                            $(this).find('#cl1').hide();
-                          });
+                                  $('#cl0').html(response);
+                                  
+                                  $('.tabela tr').each(function(){
+                                    $(this).find('#cl1').hide();
+                                  });                       
 
-                          $('#cl0').html(response);
+                              }else{
 
-                      }else{
-
-                          $('#cl0').html('');
-                        
-                          $('.tabela tr').each(function(){
-                            $(this).find('#cl1').show();
-                       });
-                   }                                           
-                }
-           });   
-    }
+                                   $('#cl0').html('');
+                                   
+                                   $('.tabela tr').each(function(){
+                                     $(this).find('#cl1').show();
+                                   });
+                               }  
+          
+                          }
+                     });   
+ }
 
 </script>
   <!-------------------------------------------- MODAIS TELA DE RELATORIO ------------------------------------------------------------------>
@@ -316,7 +317,7 @@
                                <div class="row">     
                                  <div class="form-group col-sm-6" style="margin: 0 auto; ">
                                   <label for="date">ANO DE CADASTRO:</label>
-                                  <input type="text" name="anoCadastroPaciente" id="anoCadastro" class="form-control" style="width: 120px !important; margin: 0 auto;" required>
+                                  <input type="text" name="anoCadastroPaciente" id="anoCadastro" class="form-control" style="width: 120px !important; margin: 0 auto;" autocomplete="off" required>
                                  </div>
                                </div>
                              </div>

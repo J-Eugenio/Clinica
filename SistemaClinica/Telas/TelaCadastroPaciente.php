@@ -55,19 +55,19 @@ if(isset($_SESSION["tipoUsuario"])){
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="titulo-h2">Cadastro Paciente</h2>
-            <form action="../Paciente/RegistraPaciente.php" method="POST" onsubmit="return Verificar_CPF()">
+            <form action="../Paciente/RegistraPaciente.php" method="POST">
 
             <div class="row">
              <div class="form-group col-md-9" >
               <label for="nome">Nome:</label>
               <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-              <input type="text" class="form-control up" name="txtNome" id="nome" required>
+              <input type="text" class="form-control" name="txtNome" id="nome" autocomplete="off" required style="text-transform: uppercase;">
             </div>
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
               <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-              <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" required>
+              <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" autocomplete="off" required> 
             </div>
 
             </div>
@@ -75,24 +75,22 @@ if(isset($_SESSION["tipoUsuario"])){
             <div class="row">
               <div class="form-group col-md-3">
                 <label for="cpf">CPF:</label>
-                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                <input type="text" class="form-control" name="txtCPF" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()" required>
+                <input type="text" class="form-control" name="txtCPF" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()" autocomplete="off">
             </div>
 
               <div class="form-group col-md-3">
                 <label>RG:</label>
-                <input type="text" class="form-control" name="txtRG" id="rg">
+                <input type="text" class="form-control" name="txtRG" id="rg" autocomplete="off">
               </div>
 
               <div class="form-group col-md-4">
                 <label for="email">Email:</label>
-                <input type="text" class="form-control" name="txtEmail" id="email" >
+                <input type="text" class="form-control" name="txtEmail" id="email" autocomplete="off">
               </div>
 
               <div class="form-group col-md-2">
                 <label for="sexo">Sexo:</label>
-                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                <select class="form-control" name="cxSexo" id="sexo" required>
+                <select class="form-control" name="cxSexo" id="sexo">
                                 <option value="">-----</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Feminino">Feminino</option>
@@ -106,7 +104,7 @@ if(isset($_SESSION["tipoUsuario"])){
 
                 <div class="form-group col-md-3">
                   <label for="indica">Indicação:</label>
-                  <input type="text" class="form-control up" name="txtIndicacao" id="indica"> 
+                  <input type="text" class="form-control up" name="txtIndicacao" id="indica" autocomplete="off"> 
                 </div>
           
                 <div class="form-group col-md-2">
@@ -123,12 +121,12 @@ if(isset($_SESSION["tipoUsuario"])){
 
                 <div class="form-group col-md-4">
                   <label for="profissao">Profissão:</label>
-                  <input type="text" class="form-control up" name="txtProfissao" id="profissao" >
+                  <input type="text" class="form-control up" name="txtProfissao" id="profissao" autocomplete="off">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="cidade">Cidade:</label>
-                  <input type="text" class="form-control up" name="txtCidade" id="cidade" >
+                  <input type="text" class="form-control up" name="txtCidade" id="cidade" autocomplete="off">
                 </div>
                 
               </div>
@@ -136,46 +134,45 @@ if(isset($_SESSION["tipoUsuario"])){
               <div class="row">
                 <div class="form-group col-md-3">
                   <label for="estado">Estado:</label>
-                  <input type="text" class="form-control up" name="txtEstado" id="estado" >
+                  <input type="text" class="form-control up" name="txtEstado" id="estado" autocomplete="off">
                 </div>
 
 
                 <div class="form-group col-md-3">
                   <label for="telefone">Telefone:</label>
-                  <input type="text" class="form-control" name="txtTelefone" id="telefone">
+                  <input type="text" class="form-control" name="txtTelefone" id="telefone" autocomplete="off">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="celular">Celular:</label>
-                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                  <input type="text" class="form-control" name="txtCelular" id="celular" required>
+                  <input type="text" class="form-control" name="txtCelular" id="celular" autocomplete="off">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="CEP">CEP:</label>
-                  <input type="text" class="form-control" name="txtCEP" id="CEP" >
+                  <input type="text" class="form-control" name="txtCEP" id="CEP" autocomplete="off">
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-3">
                   <label for="bairro">Bairro:</label>
-                  <input type="text" class="form-control up" name="txtBairro" id="bairro" >
+                  <input type="text" class="form-control up" name="txtBairro" id="bairro" autocomplete="off">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="endereco">Endereço:</label>
-                  <input type="text" class="form-control up" name="txtEndereco" id="endereco" >
+                  <input type="text" class="form-control up" name="txtEndereco" id="endereco" autocomplete="off">
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="numero">Numero:</label>
-                  <input type="text" class="form-control" name="txtNumero" id="numero" >  
+                  <input type="text" class="form-control" name="txtNumero" id="numero" autocomplete="off">  
                 </div>
 
                 <div class="form-group col-md-3">
                   <label for="complemento">Complemento:</label>
-                  <input type="text" class="form-control up" name="txtComplemento" id="complemento">
+                  <input type="text" class="form-control up" name="txtComplemento" id="complemento" autocomplete="off">
                 </div>
               </div>
 

@@ -23,7 +23,7 @@
 
 	if(mysqli_num_rows($resultado) > 0 ){
 		while($row_transacoes = mysqli_fetch_assoc($resultado)){
-		$html .= '<tr style="border-bottom: 1px solid black"><td style="width: 30%;">'.$row_transacoes['NOME']. "</td>";
+		$html .= '<tr style="border-bottom: 1px solid black"><td style="width: 30%;text-transform:uppercase;">'.$row_transacoes['NOME']. "</td>";
 		$html .= '<td style="width: 10%;">'.date("d/m/Y", strtotime($row_transacoes['DATANASC'])) . "</td>";
 		$html .= '<td style="width: 15%;">'.$row_transacoes['CPF'] . "</td>";
 		$html .= '<td style="width: 10%;">'.$row_transacoes['CELULAR'] . "</td>";
@@ -64,7 +64,7 @@
 
 	//Exibibir a página
 	$dompdf->stream(
-		"Relatorio_CandidoTorres.pdf", 
+		"Relatorio_CandidoTorres", 
 		array(
 			"Attachment" => false //Para realizar o download somente alterar para true
 		)

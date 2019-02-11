@@ -32,10 +32,10 @@
 	if(mysqli_num_rows($resultado) > 0){
 		while($row_transacoes = mysqli_fetch_assoc($resultado)){
 		$html .= '<tr style="border-bottom: 1px solid black"><td style="font-weight: 600; width: 5%;">'.$row_transacoes['IDAGENDA'] . "</td>";
-		$html .= '<td style="width: 30%;">'.$row_transacoes['NOMEDOPACIENTE'] . "</td>";
+		$html .= '<td style="width: 30%;text-transform:uppercase;">'.$row_transacoes['NOMEDOPACIENTE'] . "</td>";
 		$html .= '<td style="width: 15%;">'.$row_transacoes['CELULAR'] . "</td>";
-		$html .= '<td style="width: 20%;">'.$row_transacoes['NOMEDOMEDICO'] . "</td>";
-		$html .= '<td style="width: 20%;">'.$row_transacoes['TIPODEATENDIMENTO'] . "</td>";
+		$html .= '<td style="width: 30%;text-transform:uppercase;">'.$row_transacoes['NOMEDOMEDICO'] . "</td>";
+		$html .= '<td style="width: 10%;text-transform:uppercase;">'.$row_transacoes['TIPODEATENDIMENTO'] . "</td>";
 		$html .= '<td style="width: 10%;">'.date("d/m/Y", strtotime($row_transacoes['DATADEATENDIMENTO'])) . "</td></tr>";	
 	}
   }else{
@@ -72,7 +72,7 @@
 
 	//Exibibir a página
 	$dompdf->stream(
-		"Relatorio_CandidoTorres.pdf", 
+		"Relatorio_CandidoTorres", 
 		array(
 			"Attachment" => false //Para realizar o download somente alterar para true
 		)

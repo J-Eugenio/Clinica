@@ -75,7 +75,7 @@ table{
     padding: 2px 0;
 }
  
-.modal-body::-webkit-scrollbar { width:2px; background: #00beaa;}
+.modal-body::-webkit-scrollbar { width:5px; background: #00beaa;}
 .modal-body::-webkit-scrollbar-track { background: #4e4e4e; }
 .modal-body::-webkit-scrollbar-thumb { border-radius:20px; background: #00beaa;}
 .modal-body::-webkit-scrollbar-corner { visibility: hidden;}

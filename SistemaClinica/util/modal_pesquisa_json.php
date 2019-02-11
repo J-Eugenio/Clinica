@@ -6,7 +6,9 @@ require_once '../util/daoGenerico.php';
 
     $valor = $_POST['campo'];
 
-    $query = $dao->retornarPesquisaModal($valor);    
+    $query = $dao->retornarPesquisaModal($valor);
+
+    $qtd = mysqli_num_rows($query);    
  
 ?>
 <!DOCTYPE html>
@@ -33,6 +35,7 @@ require_once '../util/daoGenerico.php';
 <body>
    <table>    
     <?php  while ($dado = $query->fetch_array()){  ?>
+    <tr><td id="qtd" hidden><?php echo $qtd; ?></td></tr>
     <tr onclick="setar('<?php echo $dado['IDPACIENTE'];?>','<?php echo $dado['NOME'];?>');"  id="nome"><td id="celula"><?php echo $dado['NOME']?></td></tr>
     <?php   } ?>
    </table>

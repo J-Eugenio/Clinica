@@ -120,7 +120,7 @@ if (isset($_SESSION["tipoUsuario"])) {
  
                          <div class="form-group col-sm-6">
                                 <label for="obsId">Observação:</label>
-                                <input type="text" class="form-control" name="observacao" id="obsId">
+                                <input type="text" class="form-control" name="observacao" id="obsId" autocomplete="off">
                          </div>
                          
                          </div>
@@ -179,31 +179,29 @@ if (isset($_SESSION["tipoUsuario"])) {
                             </button>
                           </div>
                       <!-- I N I C I O  F O R M -->
-                      <form id="form_cadastro_pac" action="" onsubmit="return Verificar_CPF()">
+                      <form id="form_cadastro_pac" method="POST">
                           <div class="modal-body" style="height: 380px;">
                             <div class="conteudo">              
                                 <div class="form-group">
                                   <label for="nome">Paciente:</label>
                                   <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
-                                  <input class="form-control up" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
+                                  <input class="form-control up" type="text" name="txtNome" id="nome" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" autocomplete="off" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="dataNasc">Data de Nasc:</label>
+                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
+                                  <input type="text1" class="form-control" name="txtDataNasc" id="dataNasc" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" autocomplete="off" required>
                                 </div>
 
                                 <div class="form-group">
                                   <label for="cpfi">CPF:</label>
-                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>   
-                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!" onblur="return Verificar_CPF()" required>
-                                </div>
-
-                                 <div class="form-group">
-                                  <label for="dataNasc">Data de Nasc:</label>
-                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                                  <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" required>
+                                  <input id="cpfi" type="text1" class="form-control" name="txtCPF"  style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!" onblur="return Verificar_CPF()" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
                                   <label for="sexo">Sexo:</label>
-                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>   
-                                  <select id="select_sexo" class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo" required>
+                                  <select id="select_sexo" class="form-control" name="cxSexo" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="sexo">
                                        <option id="opc1" value="">-----</option>
                                        <option value="Masculino">Masculino</option>
                                        <option value="Feminino">Feminino</option>
@@ -211,15 +209,14 @@ if (isset($_SESSION["tipoUsuario"])) {
                                 </div>
 
                               <div class="form-group">
-                                <label for="celular">Celular:</label>
-                                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>    
-                                <input type="text1" class="form-control" id="cel" name="txtCelular" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="celular" required>
+                                <label for="celular">Celular:</label>   
+                                <input type="text1" class="form-control" id="cel" name="txtCelular" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" id="celular" autocomplete="off">
                               </div>              
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="submit" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
+                            <button type="button" id="btnSalvar" class="btn btn-primary" style="margin: 0 auto;">SALVAR</button>
                           </div>
                         </form>
                         <!-- F I M  F O R M -->
@@ -248,14 +245,17 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                 // FUNCAO REINICIAR MODAL LIMPO
                 $('#botaoAbreModal').click(function(){
+                  $('#campo').focus();  
                   $('#modal-escolha-paciente').find('input').val('');
                   $('#modal-escolha-paciente').find('td').text('');
                   $('#msg').css("visibility","hidden");   
-                  $('#btnNovo').prop('disabled',true);      
+                  $('#btnNovo').prop('disabled',true);    
                 });
+
                 $('#btnNovo').click(function(){
                   $('#modal-cadastro-paciente').find('input[type="text1"]').val('');
                   $('#modal-cadastro-paciente').find('select').val($('#opc1').val());
+                  $('#cpfi').popover('hide');
                 });
                  //--------------------           
          
@@ -310,56 +310,88 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                 });
                //----------------------------------------------
-                                 
-                        // EVENTO CLIQUE DO BOTAO NOVO
-                        $('#btnNovo').click(function(){
-                          $('#nome').val($('#campo').val());
-                        });
 
-                        // FUNCAO ADICIONAR NOME NO CAMPO
-                         function add(nome,id){
-                            $('#paciente').val(nome);
-                            $('#CampoId').val(id);
-                         }
+         // EVENTO CLIQUE DO BOTAO NOVO
+         $('#btnNovo').click(function(){
+             $('#nome').val($('#campo').val());
+         });
 
-                        // FUNCAO SE O CAMPO PACIENTE ESTIVER VAZIO
-                         function enviar(){
-                            if($('#paciente').val() == ""){
-                              alert("ESCOLHA UM PACIENTE...");
-                              return false;
-                             }else{
-                              return true;
-                             }
-                        }
+         // FUNCAO ADICIONAR NOME NO CAMPO
+          function add(nome,id){
+             $('#paciente').val(nome);
+             $('#CampoId').val(id);
+         }
 
+         // FUNCAO SE O CAMPO PACIENTE ESTIVER VAZIO
+          function enviar(){
+            if($('#paciente').val() == ""){
+                alert("ESCOLHA UM PACIENTE...");
+                return false;
+             }else{
+                return true;
+             }
+         }       
         </script>
         <script type="text/javascript">
 
            // FUNCAO CADASTRO PACIENTE ATRAVES DO MODAL
-           $('#form_cadastro_pac').submit(function(e){
+           $('#btnSalvar').click(function(){
 
-              if(Verificar_CPF()!=false){
+            var nome = $('#nome').val();
+            var dtanasc = $('#dataNasc').val();
 
-                  $.post("../Paciente/RegistraPacienteModal.php", 
+            if(nome == ''){
+                $('#nome').css("border","1px solid red");
+            }else{
+              if(dtanasc == ''){
+                 $('#dataNasc').css("border","1px solid red");
+              }else{
+
+                    $.post("../Paciente/RegistraPacienteModal.php", 
                 
                     $( "#form_cadastro_pac" ).serialize()
                   
                    ,function(data){
 
-                       alert(data);
-                       window.location = '../Telas/TelaCadastroAgenda.php';    
-                      
-                    }).error(function() {
-
-                        alert("ERRO..SERVIDOR/CAMINHO NAO ENCONTRADO!!");
+                    //CONDICAO PARA CADASTRO DE DADOS DO MODAL
+                    if(data == 'true'){
+                         alert('PACIENTE CADASTRADO COM SUCESSO!!');
+                         window.location = '../Telas/TelaCadastroAgenda.php';    
+                     }else{ 
+                         alert('ERRO AO CADASTRAR PACIENTE!!');
+                         $('#modal-cadastro-paciente').modal('show');
+                     }
+                    
                       
                     });
-              
-               }else{
-                   e.preventDefault();
-               }       
-              
-       });
+              }
+            }
+        
+           });
+           //---------------------------------------------
+
+
+          // EVENTO PARA VERIFICAR CAMPO NOME SE ESTA VAZIO OU NAO
+          $('#nome').keyup(function(){
+            var nome = $('#nome').val();
+            if(nome != ''){
+                $('#nome').css('border','1px solid silver');
+            }else{
+                $('#nome').css("border","1px solid red");
+            }
+           });
+          //-----------------------------------
+
+          // EVENTO PARA VERIFICAR CAMPO DATA DE NASCIMENTO SE ESTA VAZIO OU NAO
+          $('#dataNasc').keyup(function(){
+            var nasc = $('#dataNasc').val();
+            if(nasc != ''){
+                $('#dataNasc').css('border','1px solid silver');
+            }else{
+               $('#dataNasc').css("border","1px solid red");
+            }
+           });
+          //------------------------------------
 
         </script>    
     </body>

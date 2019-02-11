@@ -28,7 +28,9 @@ if (isset($metodo["txtNome"])) {
         $paciente->setValor("CELULAR", $celular);
 
      if($paciente->inserir($paciente)){
-            echo "PACIENTE CADASTRADO COM SUCESSO!!";
+           echo "true";
+        }else{
+           echo "false";
         }
 
 }

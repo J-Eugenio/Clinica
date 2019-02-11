@@ -14,7 +14,6 @@ if(isset($_SESSION["tipoUsuario"])){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +44,7 @@ if(isset($_SESSION["tipoUsuario"])){
                                
             });
         
-        </script>
+    </script>
     
 </head>
 <body ondragstart="return false;">
@@ -62,18 +61,18 @@ if(isset($_SESSION["tipoUsuario"])){
                     <label for="nomeU">Nome</label> 
                     
                 </p>
-                    <input type="text" name="nome" id="nomeU" required>
+                    <input type="text" name="nome" id="nomeU" autocomplete="off" required>
                 
                 <p> 
                     <label for="loginU">Login</label> 
                     
                 </p>
-                    <input type="text" name="login" id="loginU" required>
+                    <input type="text" name="login" id="loginU" autocomplete="off" required>
                 <p> 
                     <label for="senhaU">Senha</label> 
 
                 </p>
-                    <input type="password" name="senha" id="senhaU" required>
+                    <input type="password" name="senha" id="senhaU" autocomplete="off" required>
                 
                 <p> 
                     <label for="tipoU">Tipo de Usuário</label>                 

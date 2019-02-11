@@ -27,7 +27,7 @@
   	position:relative;
  	left:50%;
  	top:50%;
-  	transform: translate(-50%, -50%);
+  	transform: translate(-50%, -58%);
 	cursor: default;
 	border: none;
 	padding: 25px 0;
@@ -38,7 +38,7 @@
 }
 
 .conteudo input{
-	width: 200px;
+	width: 215px;
 	height: 25px;
 	padding: 0 10px;
 	border-radius: 20px;
@@ -69,7 +69,7 @@
 }
 
 .conteudo select, .conteudo option{
-	width: 200px;
+	width: 215px;
 	height: 25px;
 	border-radius: 20px;
 	border: none;
@@ -109,7 +109,7 @@
 	position: absolute;
 	top: 90%;
 	left: 10%;
-	margin: 15px 5px;
+	margin: 33px 12px;
 	cursor: pointer;
 	text-decoration: none;
 	border-radius: 35px;
@@ -129,7 +129,7 @@
 	position: absolute;
 	top: 90%;
 	left: 56%;
-	margin: 15px 5px;
+	margin: 33px 0px;
 	cursor: pointer;
 	text-decoration: none;
 	border-radius: 35px;

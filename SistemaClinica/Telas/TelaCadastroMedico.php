@@ -61,19 +61,19 @@ if(isset($_SESSION["tipoUsuario"])){
                     <div class="form-group col-sm-6">
                         <label for="nome">Nome:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control up" name="nome" required>
+                        <input type="text" class="form-control up" name="nome" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-sm-3">
                         <label for="DataNasc">Data de Nascimento:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control" name="dtanascimento" id="dataNasc" required>
+                        <input type="text" class="form-control" name="dtanascimento" id="dataNasc" autocomplete="off" required>
                     </div>
 
                      <div class="form-group col-sm-3">
                         <label for="conselhoId" >Conselho:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type= "text" class="form-control up" name= "conselho" id="conselhoId" required>
+                        <input type= "text" class="form-control up" name= "conselho" id="conselhoId" autocomplete="off" required>
                     </div>
                 </div>
 
@@ -81,13 +81,13 @@ if(isset($_SESSION["tipoUsuario"])){
                     <div class="form-group col-sm-5">
                         <label for="telefoneId">Telefone:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control" name="telefone" id="telefoneId" required>
+                        <input type="text" class="form-control" name="telefone" id="telefoneId" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-sm-7">
                         <label for="emailId">Email:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control" name="email" id="emailId">
+                        <input type="text" class="form-control" name="email" id="emailId" autocomplete="off" required>
                     </div>
                 </div>
 
@@ -95,13 +95,13 @@ if(isset($_SESSION["tipoUsuario"])){
                     <div class="form-group col-sm-6">
                         <label for="funcaoId">Função:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control up" name="funcao" id="funcaoId" required>
+                        <input type="text" class="form-control up" name="funcao" id="funcaoId" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="especialidadeId">Especialidade:</label>
                         <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                        <input type="text" class="form-control up" name="especialidade" id="especialidadeId" required >
+                        <input type="text" class="form-control up" name="especialidade" id="especialidadeId" autocomplete="off" required>
                     </div>
                 </div>
 

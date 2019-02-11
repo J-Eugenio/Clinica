@@ -25,11 +25,9 @@ function Verificar_CPF(){
             break;
         case 4:
             $('#cpfi').popover('hide');  
-            return false;
+            return true;
             break;
-
     }
-
 }
 
 // FUNÇÃO DE VALIDAÇÃO DOS CAMPOS CPF

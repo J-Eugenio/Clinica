@@ -38,25 +38,26 @@ if (isset($metodo["txtNome"])) {
         //SETANDO OS VALORES NO OBJETO
         $paciente = new Paciente();
 
-        $paciente->setValor("NOME", $nome);
-        $paciente->setValor("SEXO", $sexo);
-        $paciente->setValor("DATANASC", date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
-        $paciente->setValor("DATACADASTRO", date('Y-m-d')); //DATA DE CADASTRO DE CADA PACIENTE
-        $paciente->setValor("CPF", $cpf);
-        $paciente->setValor("RG", $rg);
-        $paciente->setValor("EMAIL", $email);
-        $paciente->setValor("PROFISSAO", $profissao);
-        $paciente->setValor("TELEFONE", $telefone);
-        $paciente->setValor("CELULAR", $celular);
-        $paciente->setValor("INDICACAO", $indicacao);
-        $paciente->setValor("ESTADOCIVIL", $estadocivil);
-        $paciente->setValor("ENDERECO", $endereco);
-        $paciente->setValor("BAIRRO", $bairro);
-        $paciente->setValor("NUMERO", $numero);
-        $paciente->setValor("CIDADE", $cidade);
-        $paciente->setValor("ESTADO", $estado);
-        $paciente->setValor("COMPLEMENTO", $complemento);
-        $paciente->setValor("CEP", $cep);
+                $paciente->setValor("NOME", $nome);
+                $paciente->setValor("SEXO", $sexo);
+                $paciente->setValor("DATANASC", date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
+                $paciente->setValor("DATACADASTRO", date('Y-m-d')); //DATA DE CADASTRO DE CADA PACIENTE
+                $paciente->setValor("CPF", $cpf);
+                $paciente->setValor("RG", $rg);
+                $paciente->setValor("EMAIL", $email);
+                $paciente->setValor("PROFISSAO", $profissao);
+                $paciente->setValor("TELEFONE", $telefone);
+                $paciente->setValor("CELULAR", $celular);
+                $paciente->setValor("INDICACAO", $indicacao);
+                $paciente->setValor("ESTADOCIVIL", $estadocivil);
+                $paciente->setValor("ENDERECO", $endereco);
+                $paciente->setValor("BAIRRO", $bairro);
+                $paciente->setValor("NUMERO", $numero);
+                $paciente->setValor("CIDADE", $cidade);
+                $paciente->setValor("ESTADO", $estado);
+                $paciente->setValor("COMPLEMENTO", $complemento);
+                $paciente->setValor("CEP", $cep);
+
 
         if ($paciente->inserir($paciente)){
             echo "<script>alert('PACIENTE CADASTRADO COM SUCESSO!!');window.location = '../Telas/TelaCadastroPaciente.php';</script>";

@@ -55,7 +55,7 @@ if(isset($_SESSION["tipoUsuario"])){
   
   <div class="centro">
     <div class="conteudo">
-     <fieldset>
+      <fieldset>
             <legend>Cadastro Tipo de Atendimento</legend>   
             <form action="../Atendimento/RegistraAtendimento.php" method="POST">
             
@@ -63,13 +63,14 @@ if(isset($_SESSION["tipoUsuario"])){
                     <label for="nomeId">Nome</label> 
                     
                 </p>
-                    <input type="text" name="nome" id="nomeId" style="text-transform: uppercase;" required>
+                    <input type="text" name="nome" id="nomeId" style="text-transform: uppercase;" autocomplete="off" required>
                 
                 
                 <button type="submit" name="salvar" class="bt-salvar">Salvar</button>
                 <a href="../Atendimento/TelaAtendimentoTable.php"><button type="button" class="bt-buscar">Buscar</button></a>
             </form>
-        </fieldset>
+
+      </fieldset>
     </div>
   </div>
 

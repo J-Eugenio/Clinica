@@ -64,6 +64,9 @@ while ($dado = $paciente->retornaDados("object")) {
               if(tipo_user != "Administrador"){
                    document.getElementById("opcaoUser").style.display = "none";
               }
+
+              //VERIFICAR CAMPO CPF AO CARREGAR PAGINA
+              return Verificar_CPF();
                                
             });
         
@@ -83,11 +86,11 @@ while ($dado = $paciente->retornaDados("object")) {
             <form action="" method="POST" onsubmit="return Verificar_CPF()">
 
             <div class="row">
-                    <div class="form-group col-md-9" >
+              <div class="form-group col-md-9" >
               <label for="nome">Nome:</label>
               <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
               <input type="text" class="form-control up" name="txtNome" value="<?php echo $dado->NOME?>" id="nome" required>
-                    </div>
+              </div>
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
@@ -101,8 +104,7 @@ while ($dado = $paciente->retornaDados("object")) {
             <div class="row">
               <div class="form-group col-md-3">
                 <label for="cpf">CPF:</label>
-                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>      
-                <input type="text" class="form-control" name="txtCPF" value="<?php echo $dado->CPF ?>" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()" required>
+                <input type="text" class="form-control" name="txtCPF" value="<?php echo $dado->CPF ?>" id="cpfi" data-toggle="popover" data-placement="bottom" data-trigger="manual" data-content="CPF INVÁLIDO!!" onblur="return Verificar_CPF()">
               </div>
 
               <div class="form-group col-md-3">
@@ -119,8 +121,7 @@ while ($dado = $paciente->retornaDados("object")) {
 
               <div class="form-group col-md-2">
                 <label for="sexo">Sexo:</label>        
-                <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                <select class="form-control" name="cxSexo" id="sexo" required>
+                <select class="form-control" name="cxSexo" id="sexo">
                                 <option value="">-----</option>
                                 <option value="Masculino" <?php if($dado->SEXO == "Masculino") echo 'selected'; ?>>Masculino</option>
                                 <option value="Feminino" <?php if($dado->SEXO == "Feminino") echo 'selected'; ?>>Feminino</option>
@@ -179,8 +180,7 @@ while ($dado = $paciente->retornaDados("object")) {
 
                 <div class="form-group col-md-3">
                   <label for="celular">Celular:</label>
-                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-                  <input type="text" class="form-control" name="txtCelular" value="<?php echo $dado->CELULAR ?>" id="celular" required>
+                  <input type="text" class="form-control" name="txtCelular" value="<?php echo $dado->CELULAR ?>" id="celular">
                 </div>
 
                 <div class="form-group col-md-3">
