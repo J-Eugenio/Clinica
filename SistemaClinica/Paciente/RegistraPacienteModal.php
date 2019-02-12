@@ -19,15 +19,12 @@ if (isset($metodo["txtNome"])) {
 
       //SETANDO OS VALORES NO OBJETO
         $paciente = new Paciente();
+        $data_atual = date('Y-m-d');
 
-        $paciente->setValor("NOME", $nome);
-        $paciente->setValor("SEXO", $sexo);
-        $paciente->setValor("DATANASC", date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
-        $paciente->setValor("DATACADASTRO", date('Y-m-d')); //DATA DE CADASTRO DE CADA PACIENTE
-        $paciente->setValor("CPF", $cpf);
-        $paciente->setValor("CELULAR", $celular);
+        $sql = $paciente->inserirPacienteModal($nome,$sexo,$datanasc,$cpf,$celular,$data_atual);
+     
 
-     if($paciente->inserir($paciente)){
+     if(mysqli_query($paciente->conexao,$sql)){
            echo "true";
         }else{
            echo "false";

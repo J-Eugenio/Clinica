@@ -92,7 +92,7 @@ while ($dado = $paciente->retornaDados("object")) {
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
               <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-              <input type="text" class="form-control" name="txtDataNasc" value="<?php echo date("d/m/Y", strtotime($dado->DATANASC));?>" id="dataNasc">
+              <input type="text" class="form-control" name="txtDataNasc" value="<?php echo $dado->DATANASC != '' ? date('d/m/Y',strtotime($dado->DATANASC)) : '' ?>" id="dataNasc">
               <input type="hidden" name="txtDataCadastro" value="<?php echo date("d/m/Y", strtotime($dado->DATACADASTRO)); ?>">
             </div>
 
@@ -268,30 +268,15 @@ if (isset($metodo["txtNome"])) {
     $complemento = addslashes($metodo["txtComplemento"]);
     $cep = addslashes($metodo["txtCEP"]);
 
-    //SETANDO VALORES PARA ATUALIZAR
-    $paciente->setValor("NOME", $nome);
-    $paciente->setValor("SEXO", $sexo);
-    $paciente->setValor("DATANASC",  date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
-    $paciente->setValor("DATACADASTRO", date("Y-m-d",strtotime(str_replace('/','-',$data_cadastro))));
-    $paciente->setValor("CPF", $cpf);
-    $paciente->setValor("RG", $rg);
-    $paciente->setValor("EMAIL", $email);
-    $paciente->setValor("PROFISSAO", $profissao);
-    $paciente->setValor("TELEFONE", $telefone);
-    $paciente->setValor("CELULAR", $celular);
-    $paciente->setValor("INDICACAO", $indicacao);
-    $paciente->setValor("ESTADOCIVIL", $estadocivil);
-    $paciente->setValor("ENDERECO", $endereco);
-    $paciente->setValor("BAIRRO", $bairro);
-    $paciente->setValor("NUMERO", $numero);
-    $paciente->setValor("CIDADE", $cidade);
-    $paciente->setValor("ESTADO", $estado);
-    $paciente->setValor("COMPLEMENTO", $complemento);
-    $paciente->setValor("CEP", $cep);
+   
+    $paci = new Paciente();
+    $data_atual = date('Y-m-d');
 
-    $paciente->valorpk = $id;
+     //SETANDO VALORES PARA ATUALIZAR
+    $sql = $paci->atualizarPaciente($nome,$sexo,$datanasc,$data_atual,$cpf,$rg,
+            $email,$profissao,$telefone,$celular,$indicacao,$estadocivil,$endereco,$bairro,$numero,$cidade,$estado,$complemento,$cep,$id);
 
-if ($paciente->atualizar($paciente)){
+if (mysqli_query($paci->conexao,$sql)){
     echo  "<script>alert('PACIENTE ATUALIZADO COM SUCESSO!!');window.location = '../Paciente/TelaPacienteTable.php';</script>";
 }else{
     echo "<script>alert('NENHUM DADO FOI MODIFICADO!!');</script>";

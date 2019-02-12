@@ -167,4 +167,64 @@ class daoGenerico extends ConexaoDB {
      $sql = "SELECT IDPACIENTE,NOME FROM PACIENTE WHERE NOME LIKE '%$name%'";
      return $this->executaSQL($sql);
    }
+
+   //INSERIR PACIENTE COM OU SEM DATA
+   public function inserirPaciente($nome,$sexo,$valorData,$data_atual,$cpf,$rg,
+            $email,$profissao,$telefone,$celular,$indicacao,$estadocivil,$endereco,$bairro,$numero,$cidade,$estado,$complemento,$cep){
+     
+     if($valorData != null){
+
+       $data_formatada = date("Y-m-d",strtotime(str_replace('/','-',$valorData)));
+
+       $sql = "INSERT INTO PACIENTE (NOME,SEXO,DATANASC,DATACADASTRO,CPF,RG,EMAIL,PROFISSAO,TELEFONE,CELULAR,INDICACAO,ESTADOCIVIL,
+        ENDERECO,BAIRRO,NUMERO,CIDADE,ESTADO,COMPLEMENTO,CEP) VALUES ('$nome','$sexo','$data_formatada','$data_atual','$cpf','$rg','$email',
+        '$profissao','$telefone','$celular','$indicacao','$estadocivil','$endereco','$bairro','$numero','$cidade','$estado','$complemento',
+       '$cep')";
+     }else{
+
+        $sql = "INSERT INTO PACIENTE (NOME,SEXO,DATANASC,DATACADASTRO,CPF,RG,EMAIL,PROFISSAO,TELEFONE,CELULAR,INDICACAO,ESTADOCIVIL,
+        ENDERECO,BAIRRO,NUMERO,CIDADE,ESTADO,COMPLEMENTO,CEP) VALUES ('$nome','$sexo',null,'$data_atual','$cpf','$rg','$email','$profissao','$telefone','$celular','$indicacao','$estadocivil','$endereco','$bairro','$numero','$cidade','$estado','$complemento','$cep')";
+     }
+
+     return $sql;
+
+   }
+
+   //INSERIR PACIENTE COM OU SEM DATA NO MODAL
+    public function inserirPacienteModal($nome,$sexo,$valorData,$cpf,$celular,$data_atual){
+    
+     if($valorData != null){
+
+       $data_formatada = date("Y-m-d",strtotime(str_replace('/','-',$valorData)));
+
+       $sql = "INSERT INTO PACIENTE (NOME,SEXO,DATANASC,CPF,CELULAR,DATACADASTRO) VALUES ('$nome','$sexo','$data_formatada','$cpf','$celular','$data_atual')";
+     }else{
+
+       $sql = "INSERT INTO PACIENTE (NOME,SEXO,DATANASC,CPF,CELULAR,DATACADASTRO) VALUES ('$nome','$sexo',NULL,'$cpf','$celular','$data_atual')";
+     }
+
+     return $sql;
+
+   }
+
+   //ATUALIZAR TABELA PACIENTE COM OU SEM DATA
+    public function atualizarPaciente($nome,$sexo,$valorData,$data_atual,$cpf,$rg,
+            $email,$profissao,$telefone,$celular,$indicacao,$estadocivil,$endereco,$bairro,$numero,$cidade,$estado,$complemento,$cep,$id){
+     
+     if($valorData != null){
+
+       $data_formatada = date("Y-m-d",strtotime(str_replace('/','-',$valorData)));
+
+       $sql = "UPDATE PACIENTE SET NOME = '$nome',SEXO = '$sexo',DATANASC = '$data_formatada',DATACADASTRO = '$data_atual',CPF = '$cpf',RG = '$rg',EMAIL = '$email',PROFISSAO = '$profissao',TELEFONE = '$telefone',CELULAR = '$celular',INDICACAO = '$indicacao',ESTADOCIVIL = '$estadocivil',ENDERECO = '$endereco',BAIRRO = '$bairro',NUMERO = '$numero',CIDADE = '$cidade',ESTADO = '$estado',COMPLEMENTO = '$complemento',CEP = '$cep' WHERE IDPACIENTE = '$id'";
+     }else{
+
+        $sql = "UPDATE PACIENTE SET NOME = '$nome',SEXO = '$sexo',DATANASC = NULL, DATACADASTRO = '$data_atual',CPF = '$cpf',RG = '$rg',EMAIL = '$email',PROFISSAO = '$profissao',TELEFONE = '$telefone',CELULAR = '$celular',INDICACAO = '$indicacao',ESTADOCIVIL = '$estadocivil',ENDERECO = '$endereco',BAIRRO = '$bairro',NUMERO = '$numero',CIDADE = '$cidade',ESTADO = '$estado',COMPLEMENTO = '$complemento',CEP = '$cep' WHERE IDPACIENTE = '$id'";
+     }
+
+     return $sql;
+
+   }
+
+
+
 }

@@ -68,8 +68,7 @@ if(isset($_SESSION["tipoUsuario"])){
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
-              <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
-              <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" autocomplete="off" required> 
+              <input type="text" class="form-control" name="txtDataNasc" id="dataNasc" autocomplete="off"> 
             </div>
 
             </div>

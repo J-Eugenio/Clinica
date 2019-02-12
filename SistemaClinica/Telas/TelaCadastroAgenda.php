@@ -176,8 +176,7 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                                 <div class="form-group">
                                   <label for="dataNasc">Data de Nasc:</label>
-                                  <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>  
-                                  <input type="text1" class="form-control" name="txtDataNasc" id="dataNasc" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" autocomplete="off" required>
+                                  <input type="text1" class="form-control" name="txtDataNasc" id="dataNasc" style="border-radius: 0; border: 1px solid rgba(0, 0, 0, 0.2);" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
@@ -335,9 +334,6 @@ if (isset($_SESSION["tipoUsuario"])) {
             if($('#nome').val() == ''){
                 $('#nome').css("border","1px solid red");
             }else{
-              if($('#dataNasc').val() == ''){
-                 $('#dataNasc').css("border","1px solid red");
-              }else{
 
                     //-------CONDICAO SE CPF FOR VERDADEIRO---------
                      if(Verificar_CPF() != false){ 
@@ -362,8 +358,7 @@ if (isset($_SESSION["tipoUsuario"])) {
 
                      }
                    //---------------------------------------------
-              }
-            }
+                }
         
            });
            //---------------------------------------------
@@ -379,17 +374,6 @@ if (isset($_SESSION["tipoUsuario"])) {
             }
            });
           //-----------------------------------
-
-          // EVENTO PARA VERIFICAR CAMPO DATA DE NASCIMENTO SE ESTA VAZIO OU NAO
-          $('#dataNasc').keyup(function(){
-            var nasc = $('#dataNasc').val();
-            if(nasc != ''){
-                $('#dataNasc').css('border','1px solid silver');
-            }else{
-               $('#dataNasc').css("border","1px solid red");
-            }
-           });
-          //------------------------------------
 
         </script>    
     </body>

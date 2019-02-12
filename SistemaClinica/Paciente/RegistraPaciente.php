@@ -35,32 +35,17 @@ if (isset($metodo["txtNome"])) {
     
    
 
-        //SETANDO OS VALORES NO OBJETO
+      
         $paciente = new Paciente();
+        $data_atual = date('Y-m-d');
 
-                $paciente->setValor("NOME", $nome);
-                $paciente->setValor("SEXO", $sexo);
-                $paciente->setValor("DATANASC", date("Y-m-d",strtotime(str_replace('/','-',$datanasc))));
-                $paciente->setValor("DATACADASTRO", date('Y-m-d')); //DATA DE CADASTRO DE CADA PACIENTE
-                $paciente->setValor("CPF", $cpf);
-                $paciente->setValor("RG", $rg);
-                $paciente->setValor("EMAIL", $email);
-                $paciente->setValor("PROFISSAO", $profissao);
-                $paciente->setValor("TELEFONE", $telefone);
-                $paciente->setValor("CELULAR", $celular);
-                $paciente->setValor("INDICACAO", $indicacao);
-                $paciente->setValor("ESTADOCIVIL", $estadocivil);
-                $paciente->setValor("ENDERECO", $endereco);
-                $paciente->setValor("BAIRRO", $bairro);
-                $paciente->setValor("NUMERO", $numero);
-                $paciente->setValor("CIDADE", $cidade);
-                $paciente->setValor("ESTADO", $estado);
-                $paciente->setValor("COMPLEMENTO", $complemento);
-                $paciente->setValor("CEP", $cep);
+        //SETANDO OS VALORES NO PARA INSERIR
+        $sql = $paciente->inserirPaciente($nome,$sexo,$datanasc,$data_atual,$cpf,$rg,
+            $email,$profissao,$telefone,$celular,$indicacao,$estadocivil,$endereco,$bairro,$numero,$cidade,$estado,$complemento,$cep);
 
 
-        if ($paciente->inserir($paciente)){
-            echo "<script>alert('PACIENTE CADASTRADO COM SUCESSO!!');window.location = '../Telas/TelaCadastroPaciente.php';</script>";
+        if (mysqli_query($paciente->conexao,$sql)){
+            echo "<script>alert('PACIENTE CADASTRADO COM SUCESSO!! ');window.history.back(1);</script>";  
         } else {
             echo "<script>alert('VOCE ESQUECEU DE PREENCHER ALGUM CAMPO OBRIGATÓRIO :/');window.history.back(1);</script>";
         }
