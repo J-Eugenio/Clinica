@@ -91,7 +91,6 @@ while ($dado = $paciente->retornaDados("object")) {
           
             <div class="form-group col-md-3">
               <label for="dataNasc">Data de Nasc:</label>
-              <span class="obg" style="color: #A12126; font-size: 20px; float: right;">*</span>
               <input type="text" class="form-control" name="txtDataNasc" value="<?php echo $dado->DATANASC != '' ? date('d/m/Y',strtotime($dado->DATANASC)) : '' ?>" id="dataNasc">
               <input type="hidden" name="txtDataCadastro" value="<?php echo date("d/m/Y", strtotime($dado->DATACADASTRO)); ?>">
             </div>
