@@ -147,7 +147,7 @@ if (isset($_SESSION["tipoUsuario"])) {
                           </div>
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger" style="margin: 0 auto;">CANCELAR</button>
-                            <button type="button" id="btnNovo" data-toggle="modal" data-target="#modal-cadastro-paciente" class="btn btn-primary" style="margin: 0 auto;" data-dismiss="modal" disabled>NOVO</button>
+                            <button type="button" id="btnNovo" data-toggle="modal" data-target="#modal-cadastro-paciente" class="btn btn-primary" style="margin: 0 auto;" data-dismiss="modal">NOVO</button>
                           </div>
                         </div>
                       </div>
@@ -243,7 +243,6 @@ if (isset($_SESSION["tipoUsuario"])) {
                   $('#modal-escolha-paciente').find('input').val('');
                   $('#modal-escolha-paciente').find('td').text('');
                   $('#msg').css("visibility","hidden");   
-                  $('#btnNovo').prop('disabled',true);    
                 });
 
                 $('#btnNovo').click(function(){
@@ -284,7 +283,6 @@ if (isset($_SESSION["tipoUsuario"])) {
                             $('#col1').html(response);                    
                             $('#col1').css("color", "#181818");
                             $('#msg').css("visibility","hidden");   
-                            botao.disabled = true;
 
                             }else{
                                 $('#col1').text("");
