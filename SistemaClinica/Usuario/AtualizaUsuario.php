@@ -23,7 +23,7 @@ $tipo = addslashes($txtTitulo["tipoUsuario"]);
 
 $usuario->setValor("NOME", $nome);
 $usuario->setValor("LOGIN", $login);
-$usuario->setValor("SENHA", $senha);
+$usuario->setValor("SENHA", md5($senha));
 $usuario->setValor("TIPOUSUARIO", $tipo);
 
 $usuario->valorpk = $id;
